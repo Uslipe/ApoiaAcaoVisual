@@ -1,0 +1,55 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background-image: url(/src/telas/images/bg.svg);
+}
+
+
+.container{
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aliceblue; */
+    flex-direction: column;
+    border: 1px solid #3df300;
+}
+
+.container h2{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.financeiras{
+    padding: 50px;
+    margin: 25px;
+    top: 200px;
+    display: flex;
+    width: 1000px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fd0a0a;
+}
+
+.card{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 500px;
+    margin: 10px;
+}
+
+.card-body{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.mt-4{
+    margin-top: 4rem;
+    display: relative;
+}

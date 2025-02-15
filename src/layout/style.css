@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'segioe ui','Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+/*
+body{
+    background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)50%), url('/src/telas/images/background-image.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+ } */
+
+nav{
+    background-color:#2c3e50;
+    padding: 0px 20px;
+    border-radius: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 56px;
+    /* Certifique-se de que o nav fique acima de outros elementos */
+}
+
+.menu{
+    list-style: none;
+    display: flex;
+    position: relative;
+}
+
+.menu li{
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu li:hover{
+    background-color:#34495e;
+}
+
+.menu li a{
+    color:#ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+}
+
+/* login */
+.icon-login{
+    color: #ecf0f1;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left:auto ;
+    border: 1px solid #ecf0f1;
+    
+}
+.icon-login a{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.icon-login img{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    margin-right: 15px;
+    border: 1px solid #ecf0f1;
+    position: relative;
+}
+
+.submenu{
+    position: absolute;
+    background-color:#34495e;
+    left: 0;
+    top: 100%;
+    list-style: none;
+    min-width: 200px;
+    display:none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 0 0 5px 5px;
+}
+
+.submenu .submenu{
+    top: 0;
+    left: 100%;
+    border-radius: 5px;
+}
+
+.menu li:hover > .submenu{
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.submenu li{
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+
+.submenu li:last-child{
+    border-bottom: none;
+}
+
+.menu li:hover{
+    background-color:#3b4f63;
+}
+
+.menu li:hover > a{
+    color: #3498db;
+}
+
+.submenu li:hover > a{
+    color: #2ecc71;
+}
+
+.submenu .submenu li:hover > a{
+    color: #dde323;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu li::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #3498db ;
+    transition: width 0.3s ease;
+}
+
+.menu li:hover::after{
+    width: 100%;
+}
+
+.submenu li::before{
+    content: '>>';
+    color: rgba(255,255,255,0.3);
+    margin-right: 10px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 0;
+    gap: 24px;
+    color: #fff;
+    background-color:#2c3e50;
+  }
+  .footer img {
+    width: 200px;
+  }
+  
+  .footer-icons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .btn-whatsapp {
+    position: fixed;
+    bottom: 14px;
+    right: 24px;
+    z-index: 99;
+  }
+  .btn-whatsapp img {
+    max-width: 74px;
+    transition: transform 0.4s;
+  }
+  .btn-whatsapp img:hover {
+    transform: scale(1.1);
+  }
+  
+  .btn-whatsapp .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    width: 120px;
+    top: 8px;
+    left: -144px;
+    border-radius: 8px;
+    padding: 4px;
+    text-align: center;
+    background-color: #232224;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  
+  .btn-whatsapp:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .btn-whatsapp img {
+      max-width: 64px;
+    }
+  }
+
+
