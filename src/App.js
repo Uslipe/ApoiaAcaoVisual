@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './telas/Home';
 import Login from './telas/Login';
+import Cadastro from './telas/Cadastro';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
         </Routes>
       </div>
     </Router>
