@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import './resources/home.css';
 
 export default function Home() {
   const [campanhasFinanceiras, setCampanhasFinanceiras] = useState([]);
   const [campanhasItens, setCampanhasItens] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:8080/listarCampanhasFinanceiras")
@@ -16,6 +18,10 @@ export default function Home() {
       .then(response => setCampanhasItens(response.data))
       .catch(error => console.error("Erro ao buscar campanhas de itens:", error));
   }, []);
+
+  const handleDoar = (campanha) => {
+    navigate("/doacaoFinanceira", { state: { campanha }});
+  };
 
   return (
     <div>
@@ -40,6 +46,9 @@ export default function Home() {
                   Meta de arrecadação: R$ {campanha.metaValor} <br />
                   Valor arrecadado: R$ {campanha.valorArrecadado}
                 </p>
+                <button className="btn btn-primary" onClick={() => handleDoar(campanha)}>
+                  Doar
+                </button>
               </div>
             </div>
           ))
