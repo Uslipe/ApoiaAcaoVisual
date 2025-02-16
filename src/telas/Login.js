@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./resources/login.css";
+import logo from "./images/logo_doar.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -51,6 +52,7 @@ export default function Login() {
     <div className="login-page">
       <div className="main">
         <div className="login">
+          <img src={logo} alt="Logo" width="180" heigh="180"className="login-logo"/>
           <form onSubmit={handleLogin}>
             <label htmlFor="chk" aria-hidden="true">Login</label>
             <input
