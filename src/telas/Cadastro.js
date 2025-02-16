@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './resources/signup.css';
+import logo from './images/logo_doar.png';
 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
@@ -50,6 +51,7 @@ export default function Cadastro() {
     <div className="signup-page">
       <div className="main">
         <div className="signup">
+        <img src={logo} alt="Logo" width="180" heigh="180"className="signup-logo"/>
           <form onSubmit={handleCadastro}>
             <label htmlFor="chk" aria-hidden="true">Cadastre-se</label>
             <input

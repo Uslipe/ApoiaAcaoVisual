@@ -43,6 +43,11 @@
     margin: 20px;
   }
   
+.signup-logo{
+    display: block;
+    margin: 0 auto 0 auto;
+}
+
   .signup-page .signup {
     position: relative;
     width: 100%;
@@ -54,7 +59,7 @@
     font-size: 2.3em;
     justify-content: center;
     display: flex;
-    margin: 20px 0;
+    margin: 0 0 20px 0;
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
