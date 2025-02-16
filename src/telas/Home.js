@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../layout/Navbar";
+import './resources/home.css';
 
 export default function Home() {
   const [campanhasFinanceiras, setCampanhasFinanceiras] = useState([]);
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <div className="container mt-4">
+      <div className="container mt-4 home-container">
         <h2>Campanhas Financeiras</h2>
         {campanhasFinanceiras.length > 0 ? (
           campanhasFinanceiras.map((campanha) => (
