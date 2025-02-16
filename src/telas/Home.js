@@ -22,7 +22,7 @@ export default function Home() {
       <Navbar />
       <div className="container mt-4 home-container">
         <h2>Campanhas Financeiras</h2>
-        {campanhasFinanceiras.length > 0 ? (
+        {campanhasFinanceiras.length > 0 && (
           campanhasFinanceiras.map((campanha) => (
             <div key={campanha.idCampanhaFinanceira} className="card mb-3">
               <div className="card-body">
@@ -43,12 +43,10 @@ export default function Home() {
               </div>
             </div>
           ))
-        ) : (
-          <p>Nenhuma campanha financeira encontrada.</p>
         )}
 
         <h2 className="mt-4">Campanhas de Itens</h2>
-        {campanhasItens.length > 0 ? (
+        {campanhasItens.length > 0 && (
           campanhasItens.map((campanha) => (
             <div key={campanha.idCampanhaDeItens} className="card mb-3">
               <div className="card-body">
@@ -71,8 +69,6 @@ export default function Home() {
               </div>
             </div>
           ))
-        ) : (
-          <p>Nenhuma campanha de itens encontrada.</p>
         )}
       </div>
     </div>
