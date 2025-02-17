@@ -1,17 +1,60 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import Navbar from "../layout/Navbar";
 import "./resources/doacaoFinanceira.css";
 
 export default function DoacaoFinanceira() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { campanha } = location.state || {};
   const [valorDoacao, setValorDoacao] = useState("");
-  const [metodoPagamento, setMetodoPagamento] = useState("cartao");
+  const [metodoPagamento, setMetodoPagamento] = useState("CARTAO");
 
-  const handleDoacao = () => {
-    // Lógica para finalizar a doação
-    console.log(`Doação de R$ ${valorDoacao} para a campanha ${campanha.nome} via ${metodoPagamento}`);
+  const handleDoacao = async () => {
+    const token = localStorage.getItem("token");
+    const idUsuario = localStorage.getItem("idUsuario");
+
+    console.log("Token:", token);
+    console.log("ID do Usuário:", idUsuario);
+
+    if (!token) {
+      toast.error("Você precisa estar logado para realizar uma doação.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      navigate("/login");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8080/salvarDoacaoFinanceira", {
+        valor: valorDoacao,
+        formaPagamento: metodoPagamento,
+        campanha: { idCampanhaFinanceira: campanha.idCampanhaFinanceira },
+        idUsuario: { id: idUsuario } // Referencia o ID do usuário logado
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      if (response.status === 201) {
+        toast.success("Doação realizada com sucesso!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        setValorDoacao("");
+        setMetodoPagamento("cartao");
+      }
+    } catch (error) {
+      console.error("Erro ao realizar doação:", error);
+      toast.error("Falha ao realizar doação. Tente novamente.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
   };
 
   const handleValorPreDefinido = (valor) => {
@@ -36,8 +79,8 @@ export default function DoacaoFinanceira() {
             value={metodoPagamento}
             onChange={(e) => setMetodoPagamento(e.target.value)}
           >
-            <option value="cartao">Cartão</option>
-            <option value="pix">Pix</option>
+            <option value="CARTAO">Cartão</option>
+            <option value="PIX">Pix</option>
           </select>
           <input
             type="number"

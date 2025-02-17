@@ -36,8 +36,9 @@ export default function Login() {
       });
 
       if (response.status === 200) {
-        const token = response.data; // O token vem na resposta
+        const {token, idUsuario} = response.data; // O token e o id do usuário vem na resposta
         localStorage.setItem("token", token); // Armazena no localStorage
+        localStorage.setItem("idUsuario", idUsuario); // Armazena o ID do usuário
 
         // Exibe uma notificação de sucesso
         toast.success("Login realizado com sucesso!", {
