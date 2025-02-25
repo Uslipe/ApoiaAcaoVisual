@@ -46,7 +46,7 @@ export default function DoacaoFinanceira() {
           autoClose: 3000,
         });
         setValorDoacao("");
-        setMetodoPagamento("cartao");
+        setMetodoPagamento("CARTAO");
       }
     } catch (error) {
       console.error("Erro ao realizar doação:", error);
