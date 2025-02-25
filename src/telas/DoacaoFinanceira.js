@@ -16,17 +16,33 @@ export default function DoacaoFinanceira() {
     const token = localStorage.getItem("token");
     const idUsuario = localStorage.getItem("idUsuario");
 
-    console.log("Token:", token);
-    console.log("ID do Usuário:", idUsuario);
+    if (!valorDoacao) {
+      toast.error("Digite ou selecione um valor a ser doado.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        pauseOnHover: false,
+      });
+      return;
+    }
 
     if (!token) {
       toast.error("Você precisa estar logado para realizar uma doação.", {
         position: "top-right",
         autoClose: 3000,
+        hideProgressBar: true,
+        pauseOnHover: false,
       });
       navigate("/login");
       return;
     }
+
+    const notificacaoDeEspera = toast.info("Processando sua doação, por favor aguarde...", {
+      position: "top-right",
+      autoClose: false,
+      closeOnClick: false,
+      draggable: false,
+    });
 
     try {
       const response = await axios.post("http://localhost:8080/salvarDoacaoFinanceira", {
@@ -40,10 +56,17 @@ export default function DoacaoFinanceira() {
         }
       });
 
+      toast.dismiss(notificacaoDeEspera);
+
       if (response.status === 201) {
         toast.success("Doação realizada com sucesso!", {
           position: "top-right",
           autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
         });
         setValorDoacao("");
         setMetodoPagamento("CARTAO");
@@ -53,6 +76,11 @@ export default function DoacaoFinanceira() {
       toast.error("Falha ao realizar doação. Tente novamente.", {
         position: "top-right",
         autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
       });
     }
   };
