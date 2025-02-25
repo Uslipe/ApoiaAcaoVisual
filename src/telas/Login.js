@@ -44,10 +44,10 @@ export default function Login() {
         toast.success("Login realizado com sucesso!", {
           position: "top-right",
           autoClose: 3000, // Fecha automaticamente em 3 segundos
-          hideProgressBar: false,
+          hideProgressBar: true,
           closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
+          pauseOnHover: false,
+          draggable: false,
           progress: undefined,
         });
 
@@ -60,6 +60,8 @@ export default function Login() {
       toast.error("Falha ao fazer login. Verifique os dados e tente novamente.", {
         position: "top-right",
         autoClose: 3000,
+        hideProgressBar: true,
+        pauseOnHover: false,
       });
     }
   };

@@ -10,7 +10,7 @@ export default function Cadastro() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const navigate = useNavigate(); // Para redirecionamento
+  const navigate = useNavigate(); 
 
   const handleCadastro = async (e) => {
     e.preventDefault();
@@ -27,10 +27,10 @@ export default function Cadastro() {
         toast.success("Cadastro realizado com sucesso!", {
           position: "top-right",
           autoClose: 3000, // Fecha automaticamente em 3 segundos
-          hideProgressBar: false,
+          hideProgressBar: true,
           closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
+          pauseOnHover: false,
+          draggable: false,
           progress: undefined,
         });
 
@@ -43,6 +43,8 @@ export default function Cadastro() {
       toast.error("Falha ao fazer cadastro. Verifique os dados e tente novamente.", {
         position: "top-right",
         autoClose: 3000,
+        hideProgressBar: true,
+        pauseOnHover: false,
       });
     }
   };
