@@ -1,0 +1,13 @@
+.perfil-container {
+    padding-top: 50px;
+    text-align: center;
+  }
+  
+  .perfil-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .perfil-container .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }

@@ -7,6 +7,7 @@ import Home from "./telas/Home";
 import Login from "./telas/Login";
 import Cadastro from "./telas/Cadastro";
 import DoacaoFinanceira from "./telas/DoacaoFinanceira";
+import Perfil from "./telas/Perfil";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/doacaoFinanceira" element={<DoacaoFinanceira />} />
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
       </div>
     </Router>
