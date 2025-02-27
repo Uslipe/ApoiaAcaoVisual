@@ -179,31 +179,31 @@ nav{
     gap: 24px;
     color: #fff;
     background-color:#2c3e50;
-  }
-  .footer img {
+}
+.footer img {
     width: 200px;
-  }
+}
   
-  .footer-icons {
+.footer-icons {
     display: flex;
     gap: 8px;
-  }
+}
   
-  .btn-whatsapp {
+.btn-whatsapp {
     position: fixed;
     bottom: 14px;
     right: 24px;
     z-index: 99;
-  }
-  .btn-whatsapp img {
+}
+.btn-whatsapp img {
     max-width: 74px;
     transition: transform 0.4s;
-  }
-  .btn-whatsapp img:hover {
+}
+.btn-whatsapp img:hover {
     transform: scale(1.1);
-  }
+}
   
-  .btn-whatsapp .tooltip-text {
+.btn-whatsapp .tooltip-text {
     visibility: hidden;
     position: absolute;
     width: 120px;
@@ -216,15 +216,30 @@ nav{
     color: #fff;
     opacity: 0;
     transition: opacity 0.4s;
-  }
+}
   
-  .btn-whatsapp:hover .tooltip-text {
+.btn-whatsapp:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
-  }
+}
   
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .btn-whatsapp img {
       max-width: 64px;
     }
-  }
+}
+
+.btn-sair-da-conta {
+    background-color: #dc3545; /* Cor de fundo vermelha */
+    color: #fff; /* Cor do texto branca */
+    padding: 10px 15px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+}
+  
+.btn-sair-da-conta:hover {
+    background-color: #c82333; 
+}

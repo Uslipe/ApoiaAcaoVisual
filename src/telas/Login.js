@@ -48,7 +48,7 @@ export default function Login() {
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
-          progress: undefined,
+          progress: undefined
         });
 
         setTimeout(() => {
@@ -61,7 +61,7 @@ export default function Login() {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: true,
-        pauseOnHover: false,
+        pauseOnHover: false
       });
     }
   };
