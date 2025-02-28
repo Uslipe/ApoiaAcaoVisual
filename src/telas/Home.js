@@ -47,6 +47,7 @@ export default function Home() {
                   metaValor={campanha.metaValor}
                   diasRestantes={calcularDiasRestantes(campanha.dataFim)}
                   onDoar={() => handleDoar(campanha)}
+                  idCampanhaFinanceira={campanha.idCampanhaFinanceira}
                 />
               </div>
             ))}
