@@ -4,26 +4,21 @@
     box-sizing: border-box;
     font-family:'segioe ui','Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
-/*
-body{
-    background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)50%), url('/src/telas/images/background-image.jpg');
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
- } */
 
-nav{
-    background-color:#2c3e50;
-    padding: 0px 20px;
-    border-radius: 5px;
-    position: fixed;
+
+.navLogin{
+    display: flex;
+    padding: 0px;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: auto;
+    width: 80%;
     z-index: 1000;
-    height: 56px;
     overflow: hidden;
+    background: transparent 100%;
+    box-shadow: unset;
+
 }
+
 
 .menu{
     list-style: none;
@@ -31,7 +26,18 @@ nav{
     position: relative;
 }
 
+.menu .teste{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    height: 56px;
+    padding: 0 20px; 
+}
+
 .menu li{
+    height: 100%;
+    height: 56px;
     padding: 15px 25px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -51,13 +57,18 @@ nav{
     align-items: center; 
 }
 
-.areaOng{
-    background-color: #2ecc71;
+/* login */
+.btlogin{
+    margin-left: 700px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    height: 56px;
+    padding: 0 20px; 
+
 }
 
 
-
-/* login */
 .icon-login {
     margin-left: auto;
     display: flex;
@@ -82,7 +93,7 @@ nav{
 
 .icon-login a:hover {
     background-color: #2980b9; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2); 
 }
   
 .icon-login img {
@@ -124,27 +135,9 @@ nav{
 }
 
 
-.submenu li:last-child{
-    border-bottom: none;
-}
 
-.menu li:hover{
-    background-color:#3b4f63;
-}
 
-.menu li:hover > a{
-    color: #3498db;
-}
-
-.submenu li:hover > a{
-    color: #2ecc71;
-}
-
-.submenu .submenu li:hover > a{
-    color: #dde323;
-}
-
-@keyframes fadeIn{
+@keyframes fadeIn{ 
     from{
         opacity: 0;
         transform: translateY(10px);
@@ -155,26 +148,7 @@ nav{
     }
 }
 
-.menu li::after{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: #3498db ;
-    transition: width 0.3s ease;
-}
 
-.menu li:hover::after{
-    width: 100%;
-}
-
-.submenu li::before{
-    content: '>>';
-    color: rgba(255,255,255,0.3);
-    margin-right: 10px;
-}
 
 .footer {
     display: flex;
@@ -233,4 +207,13 @@ nav{
     .btn-whatsapp img {
       max-width: 64px;
     }
+  }
+
+  svg{
+    padding-bottom: 4px;
+    margin-right: 12px;
+    width: 20px;
+    height: 30px;
+    fill: #ecf0f1;
+    
   }

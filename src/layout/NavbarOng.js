@@ -11,7 +11,7 @@ export default function Navbar() {
         <li><Link to="/">Campanhas</Link></li>
         <li><Link to="/CadastroOng">Contato</Link></li>
         <li><Link to="/loginong">Sobre</Link></li>
-        <li className="areaOng"><Link to="/AreaOng">Área de ONGs</Link></li>
+        <li><Link to="/loginong">Área de ONGs</Link></li>
         <li className="icon-login">
           {token ? (
             <Link className="nav-link btn btn-light text-light px-3" to="/perfil">
