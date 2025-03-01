@@ -1,9 +1,18 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate,useLocation } from 'react-router-dom';
 import './resources/style.css';
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("idUsuario");
+    navigate("/");
+  };
+
   return (
     <nav>
       <ul className="menu">
@@ -13,10 +22,16 @@ export default function Navbar() {
         <li><Link to="/loginong">Sobre</Link></li>
         <li className="areaOng"><Link to="/AreaOng">Área de ONGs</Link></li>
         <li className="icon-login">
-          {token ? (
-            <Link className="nav-link btn btn-light text-light px-3" to="/perfil">
-              Ver Perfil
-            </Link>
+        {token ? (
+            location.pathname === "/perfil" ? (
+              <button className="nav-link btn-sair-da-conta" onClick={handleLogout}>
+                Sair da Conta
+              </button>
+            ) : (
+              <Link className="nav-link btn btn-light text-light px-3" to="/perfil">
+                Ver Perfil
+              </Link>
+            )
           ) : (
             <Link className="nav-link btn btn-light text-light px-3" to="/login">
               Login
