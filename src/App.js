@@ -13,7 +13,9 @@ import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
 import AreaOng from "./telas/AreaOng";
 
-import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador";  
+import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador"; 
+import HomeADM from "./telas/HomeADM"; 
+import ListarCampanhasADM from "./telas/ListarCampanhasADM";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
           <Route path="/AreaOng" element={<AreaOng />} />
           <Route path="/historicoDoacoesDoador" element={<HistoricoDoacoesDoador />} />
+          <Route path="/homeADM" element={<HomeADM />} />
+          <Route path="/listarCampanhasADM" element={<ListarCampanhasADM />} />
         </Routes>
       </div>
     </Router>
