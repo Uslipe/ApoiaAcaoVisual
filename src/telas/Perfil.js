@@ -167,6 +167,10 @@ export default function Perfil() {
     });
   };
 
+  const handleHistoricoDoacoesDoador = () => {
+    navigate("/historicoDoacoesDoador");
+  };
+
   return (
     <div>
       <Navbar />
@@ -245,6 +249,14 @@ export default function Perfil() {
             Excluir Conta
           </button>
         </div>
+        <h2>Gerenciamento de Perfil</h2>
+        {/* Adicione aqui os campos e funcionalidades para gerenciar o perfil do usuário */}
+        <button className="btn btn-primary mt-4" onClick={handleHistoricoDoacoesDoador}>
+          Ver Histórico de Doações
+        </button>
+        <button className="btn btn-danger mt-4" onClick={handleLogout}>
+          Sair
+        </button>
       </div>
     </div>
   );

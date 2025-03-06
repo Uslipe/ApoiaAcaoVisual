@@ -13,6 +13,7 @@ import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
 import AreaOng from "./telas/AreaOng";
 
+import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador";  
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/CadastroOng" element={<CadastroOng />} />
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
           <Route path="/AreaOng" element={<AreaOng />} />
+          <Route path="/historicoDoacoesDoador" element={<HistoricoDoacoesDoador />} />
         </Routes>
       </div>
     </Router>
