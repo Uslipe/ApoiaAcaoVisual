@@ -16,6 +16,7 @@ import AreaOng from "./telas/AreaOng";
 import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador"; 
 import HomeADM from "./telas/HomeADM"; 
 import ListarOngsADM from "./telas/ListarOngsADM";
+import ListarUsuariosADM from "./telas/ListarUsuariosADM";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/historicoDoacoesDoador" element={<HistoricoDoacoesDoador />} />
           <Route path="/homeADM" element={<HomeADM />} />
           <Route path="/listarOngsADM" element={<ListarOngsADM />} />
+          <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
         </Routes>
       </div>
     </Router>

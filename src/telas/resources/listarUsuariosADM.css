@@ -1,0 +1,35 @@
+.usuarios-container {
+  padding: 100px; /* Ajuste conforme necessário */
+}
+
+.usuarios-container h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.usuarios-lista {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.usuario-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.usuario-item.header {
+  font-weight: bold;
+  background-color: #f1f1f1;
+  border-bottom: 2px solid #ccc;
+  margin: -10px -10px 10px -10px;
+  padding: 10px;
+}
+
+.usuario-item span {
+  flex: 1;
+  text-align: center;
+}
