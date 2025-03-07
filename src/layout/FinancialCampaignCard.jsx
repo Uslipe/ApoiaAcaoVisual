@@ -18,7 +18,7 @@ export default function FinancialCampaignCard({
   // Carrega a imagem da campanha
   useEffect(() => {
     console.log(`🔄 Buscando imagem para campanha ID: ${idCampanhaFinanceira}`);
-    axios.get(`http://localhost:8080/imagemCampanha/${idCampanhaFinanceira}`, {
+    axios.get(`http://localhost:8080/imagem/campanha/${idCampanhaFinanceira}`, {
       responseType: 'arraybuffer',
     }).then((response) => {
       //Logs
