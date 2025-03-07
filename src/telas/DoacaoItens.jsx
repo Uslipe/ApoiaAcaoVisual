@@ -93,6 +93,10 @@ export default function DoacaoItens() {
             por: {campanha.idOng?.nome || "Desconhecida"}
           </h6>
           <p className="text-muted">Categoria: {campanha.categoriaItens}</p>
+          <p className="text-muted">
+            Endereço de Entrega:{" "}
+            {campanha.idOng?.endereco || "Endereço não disponível"}
+          </p>
         </div>
         <div className="input-group mt-3">
           <input
