@@ -72,7 +72,9 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="main">
+
         <div className="login">
+          {/* <img src={logo} alt="Logo" width="180" heigh="180" className="login-logo" /> */}
           <img
             src={logo}
             alt="Logo"
@@ -105,6 +107,8 @@ export default function Login() {
               Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link>
             </p>
           </form>
+
+
         </div>
       </div>
     </div>

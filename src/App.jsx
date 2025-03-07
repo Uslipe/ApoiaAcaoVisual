@@ -22,6 +22,7 @@ import HomeADM from "./telas/HomeADM";
 import ListarOngsADM from "./telas/ListarOngsADM";
 import ListarUsuariosADM from "./telas/ListarUsuariosADM";
 import DoacaoItens from "./telas/DoacaoItens";
+import ValidarOngADM from "./telas/ValidarOngADM";
 
 function App() {
   useEffect(() => {
@@ -57,10 +58,13 @@ function App() {
           <Route path="/listarOngsADM" element={<ListarOngsADM />} />
           <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
           <Route path="/doacaoItens" element={<DoacaoItens />} />
+          <Route path="/validarOngADM" element={<ValidarOngADM />} />
         </Routes>
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
-          <header className="App-header"></header>
+          <header className="App-header">
+          </header>
+          {/* <header className="App-header"></header> */}
         </div>
       </div>
     </Router>
