@@ -1,0 +1,34 @@
+.doacaoItens-container {
+  padding-top: 50px;
+}
+
+.campanha-info {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 50px;
+  border-radius: 5px;
+}
+
+.campanha-info h2 {
+  margin-bottom: 10px;
+  font-size: 3rem;
+}
+
+.campanha-info h6 {
+  font-size: 2rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group .form-control {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.valor-predefinido .btn {
+  margin-right: 10px;
+}

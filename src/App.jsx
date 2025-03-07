@@ -15,8 +15,6 @@ import NavbarOng from "./layout/NavbarOng";
 import NavbarLog from "./layout/NavbarLog"; // Corrigir a importação
 import AreaOng from "./telas/AreaOng";
 import VLibras from "@djpfs/react-vlibras"; // VLibras
-
-
 import "aos/dist/aos.css"; // AOS CSS
 import AOS from "aos";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // Font Awesome
@@ -24,6 +22,8 @@ import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador";
 import HomeADM from "./telas/HomeADM";
 import ListarOngsADM from "./telas/ListarOngsADM";
 import ListarUsuariosADM from "./telas/ListarUsuariosADM";
+import DoacaoItens from "./telas/DoacaoItens";
+import ValidarOngADM from "./telas/ValidarOngADM";
 
 function App() {
   useEffect(() => {
@@ -59,8 +59,9 @@ function App() {
           <Route path="/homeADM" element={<HomeADM />} />
           <Route path="/listarOngsADM" element={<ListarOngsADM />} />
           <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
+          <Route path="/doacaoItens" element={<DoacaoItens />} />
+          <Route path="/validarOngADM" element={<ValidarOngADM />} />
         </Routes>
-
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
           <header className="App-header">

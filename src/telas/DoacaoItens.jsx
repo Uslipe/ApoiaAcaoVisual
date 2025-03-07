@@ -3,21 +3,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Navbar from "../layout/Navbar";
-import "./resources/doacaoFinanceira.css";
+import "./resources/doacaoItens.css";
 
-export default function DoacaoFinanceira() {
+export default function DoacaoItens() {
   const location = useLocation();
   const navigate = useNavigate();
   const { campanha } = location.state || {};
-  const [valorDoacao, setValorDoacao] = useState("");
-  const [metodoPagamento, setMetodoPagamento] = useState("CARTAO");
+  const [quantidade, setQuantidade] = useState("");
 
   const handleDoacao = async () => {
     const token = localStorage.getItem("token");
     const idUsuario = localStorage.getItem("idUsuario");
 
-    if (!valorDoacao) {
-      toast.error("Digite ou selecione um valor a ser doado.", {
+    if (!quantidade) {
+      toast.error("Informe a quantidade de itens para doação.", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: true,
@@ -49,12 +48,12 @@ export default function DoacaoFinanceira() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/salvarDoacaoFinanceira",
+        "http://localhost:8080/salvarDoacaoDeItens",
         {
-          valor: valorDoacao,
-          formaPagamento: metodoPagamento,
-          campanha: { idCampanhaFinanceira: campanha.idCampanhaFinanceira },
-          idUsuario: { id: idUsuario }, // Referencia o ID do usuário logado
+          usuario: { id: idUsuario },
+          campanhaDeItens: { idCampanhaDeItens: campanha.idCampanhaDeItens },
+          quantidadeDeItens: quantidade,
+          categoriaItens: campanha.categoriaItens,
         },
         {
           headers: {
@@ -70,76 +69,43 @@ export default function DoacaoFinanceira() {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: true,
-          closeOnClick: false,
           pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
         });
-        setValorDoacao("");
-        setMetodoPagamento("CARTAO");
+        setQuantidade("");
       }
     } catch (error) {
-      console.error("Erro ao realizar doação:", error);
-      toast.error("Falha ao realizar doação. Tente novamente.", {
+      toast.error("Erro ao realizar a doação. Tente novamente.", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: true,
-        closeOnClick: false,
         pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
       });
     }
   };
 
-  const handleValorPreDefinido = (valor) => {
-    setValorDoacao(valor);
-  };
-
-  if (!campanha) {
-    return <p>Campanha não encontrada.</p>;
-  }
-
   return (
     <div>
       <Navbar />
-      <div className="container mt-4 doacaoFinanceira-container">
+      <div className="container mt-4 doacaoItens-container">
         <div className="campanha-info">
           <h2>{campanha.nome}</h2>
           <h6 className="text-muted">
             por: {campanha.idOng?.nome || "Desconhecida"}
           </h6>
+          <p className="text-muted">Categoria: {campanha.categoriaItens}</p>
         </div>
         <div className="input-group mt-3">
-          <select
-            className="form-select"
-            value={metodoPagamento}
-            onChange={(e) => setMetodoPagamento(e.target.value)}
-          >
-            <option value="CARTAO">Cartão</option>
-            <option value="PIX">Pix</option>
-          </select>
           <input
             type="number"
             className="form-control"
-            placeholder="Valor em reais"
-            value={valorDoacao}
-            onChange={(e) => setValorDoacao(e.target.value)}
+            placeholder="Quantidade de itens"
+            value={quantidade}
+            onChange={(e) => setQuantidade(e.target.value)}
+            required
           />
           <button className="btn btn-primary" onClick={handleDoacao}>
-            <i class="fa-solid fa-hand-holding-heart"></i> Finalizar Doação
+            Finalizar Doação
           </button>
-        </div>
-        <div className="valor-predefinido mt-3 d-flex justify-content-center">
-          {[10, 20, 30, 50, 80, 120].map((valor) => (
-            <button
-              key={valor}
-              className="btn btn-primary me-2"
-              onClick={() => handleValorPreDefinido(valor)}
-            >
-              <i class="fa-solid fa-hand-holding-heart"></i> Doe R$ {valor}
-            </button>
-          ))}
         </div>
       </div>
     </div>
