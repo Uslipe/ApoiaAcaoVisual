@@ -50,7 +50,10 @@ function App() {
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
           <Route path="/NavbarOng" element={<NavbarOng />} />
           <Route path="/AreaOng" element={<AreaOng />} />
-          <Route path="/historicoDoacoesDoador" element={<HistoricoDoacoesDoador />} />
+          <Route
+            path="/historicoDoacoesDoador"
+            element={<HistoricoDoacoesDoador />}
+          />
           <Route path="/homeADM" element={<HomeADM />} />
           <Route path="/listarOngsADM" element={<ListarOngsADM />} />
           <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
@@ -60,6 +63,7 @@ function App() {
           {loaded && <VLibras forceOnload={true} />}
           <header className="App-header">
           </header>
+          {/* <header className="App-header"></header> */}
         </div>
       </div>
     </Router>

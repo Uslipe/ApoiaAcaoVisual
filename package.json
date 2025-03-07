@@ -8,21 +8,28 @@
     "aos": "^2.3.4",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
+    "browserify-zlib": "^0.2.0",
     "cra-template": "1.2.0",
+    "history": "^5.3.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
     "react-router": "^7.2.0",
     "react-router-dom": "^7.1.5",
-    "react-scripts": "^5.0.1",
+    "react-slick": "^0.30.3",
     "react-toastify": "^11.0.3",
+    "slick-carousel": "^1.8.1",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5",
+    "vite-plugin-svgr": "^4.3.0",
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
@@ -43,12 +50,23 @@
     ]
   },
   "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "buffer": "^6.0.3",
+    "empty-module": "^0.0.2",
+    "esbuild": "^0.25.0",
+    "esbuild-plugins-node-modules-polyfill": "^1.7.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.0.2",
     "jest": "^27.5.1",
+    "jsdom": "^26.0.0",
     "prettier": "3.5.2",
-    "prettier-eslint": "^16.3.0"
+    "prettier-eslint": "^16.3.0",
+    "process": "^0.11.10",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.8"
   }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../layout/Navbar";
-import './resources/listarUsuariosADM.css';
+import "./resources/listarUsuariosADM.css";
 
 export default function ListarUsuariosADM() {
   const [usuarios, setUsuarios] = useState([]);
@@ -17,14 +17,16 @@ export default function ListarUsuariosADM() {
       try {
         const response = await axios.get("http://localhost:8080/usuarios", {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         console.log("Resposta da API:", response.data);
 
         // Ordenar os usuários por nome (alfabeticamente)
-        const usuariosOrdenados = response.data.sort((a, b) => a.nome.localeCompare(b.nome));
+        const usuariosOrdenados = response.data.sort((a, b) =>
+          a.nome.localeCompare(b.nome),
+        );
 
         setUsuarios(usuariosOrdenados);
       } catch (error) {

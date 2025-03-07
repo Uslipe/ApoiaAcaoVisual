@@ -48,7 +48,7 @@ export default function Login() {
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
-          progress: undefined
+          progress: undefined,
         });
 
         setTimeout(() => {
@@ -57,12 +57,15 @@ export default function Login() {
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);
-      toast.error("Falha ao fazer login. Verifique os dados e tente novamente.", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: true,
-        pauseOnHover: false
-      });
+      toast.error(
+        "Falha ao fazer login. Verifique os dados e tente novamente.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+          pauseOnHover: false,
+        },
+      );
     }
   };
 
@@ -71,9 +74,18 @@ export default function Login() {
       <div className="main">
 
         <div className="login">
-          <img src={logo} alt="Logo" width="180" heigh="180" className="login-logo" />
+          {/* <img src={logo} alt="Logo" width="180" heigh="180" className="login-logo" /> */}
+          <img
+            src={logo}
+            alt="Logo"
+            width="180"
+            heigh="180"
+            className="login-logo"
+          />
           <form onSubmit={handleLogin}>
-            <label htmlFor="chk" aria-hidden="true">Login</label>
+            <label htmlFor="chk" aria-hidden="true">
+              Login
+            </label>
             <input
               type="email"
               name="email"
