@@ -12,7 +12,10 @@ import LoginOng from "./telas/LoginOng";
 import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
 import AreaOng from "./telas/AreaOng";
-
+import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador";
+import HomeADM from "./telas/HomeADM";
+import ListarOngsADM from "./telas/ListarOngsADM";
+import ListarUsuariosADM from "./telas/ListarUsuariosADM";
 
 function App() {
   return (
@@ -29,6 +32,13 @@ function App() {
           <Route path="/CadastroOng" element={<CadastroOng />} />
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
           <Route path="/AreaOng" element={<AreaOng />} />
+          <Route
+            path="/historicoDoacoesDoador"
+            element={<HistoricoDoacoesDoador />}
+          />
+          <Route path="/homeADM" element={<HomeADM />} />
+          <Route path="/listarOngsADM" element={<ListarOngsADM />} />
+          <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
         </Routes>
       </div>
     </Router>

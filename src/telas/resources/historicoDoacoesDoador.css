@@ -1,0 +1,27 @@
+.historico-doacoes-container {
+  padding: 200px;
+}
+
+.historico-doacoes-container h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.doacoes-lista {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.doacao-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.doacao-item span {
+  flex: 1;
+  text-align: center;
+}

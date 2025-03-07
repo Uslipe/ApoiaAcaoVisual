@@ -1,23 +1,24 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import Perfil from "../Perfil";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 
 // Mock axios and toast
-jest.mock("axios");
-jest.mock("react-toastify", () => ({
+vi.mock("axios");
+vi.mock("react-toastify", () => ({
   toast: {
-    success: jest.fn(),
-    error: jest.fn(),
+    success: vi.fn(),
+    error: vi.fn(),
   },
 }));
 
 describe("Componente do Perfil", () => {
-  const mockNavigate = jest.fn();
-  const mockGetItem = jest.spyOn(Storage.prototype, "getItem");
-  const mockRemoveItem = jest.spyOn(Storage.prototype, "removeItem");
+  const mockNavigate = vi.fn();
+  const mockGetItem = vi.spyOn(Storage.prototype, "getItem");
+  const mockRemoveItem = vi.spyOn(Storage.prototype, "removeItem");
 
   beforeEach(() => {
     mockNavigate.mockClear();
@@ -35,9 +36,9 @@ describe("Componente do Perfil", () => {
     });
 
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Perfil />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
 
     expect(screen.getByText("Editar Perfil")).toBeInTheDocument();
@@ -53,9 +54,9 @@ describe("Componente do Perfil", () => {
     axios.put.mockResolvedValueOnce({ status: 200 });
 
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Perfil />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
 
     fireEvent.change(screen.getByLabelText("Nome"), {
@@ -69,7 +70,7 @@ describe("Componente do Perfil", () => {
     expect(axios.put).toHaveBeenCalledWith(
       "http://localhost:8080/editarPerfil/mockId",
       {
-        nome: "João da Silva",
+        nome: "João Da Silva",
         email: "joaodasilva@exemplo.com",
         senha: undefined,
       },
@@ -88,9 +89,9 @@ describe("Componente do Perfil", () => {
     });
 
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Perfil />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
 
     fireEvent.change(screen.getByLabelText("Nova Senha"), {
@@ -115,9 +116,9 @@ describe("Componente do Perfil", () => {
     axios.delete.mockResolvedValueOnce({ status: 200 });
 
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Perfil />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
 
     fireEvent.change(
