@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
+import Footer from "../layout/footer";
 import FinancialCampaignCard from "../layout/FinancialCampaignCard";
 import './resources/home.css';
+
+
 
 export default function Home() {
   const [campanhasFinanceiras, setCampanhasFinanceiras] = useState([]);
@@ -14,14 +17,14 @@ export default function Home() {
     axios.get("http://localhost:8080/listarCampanhasFinanceiras")
       .then(response => setCampanhasFinanceiras(response.data))
       .catch(error => console.error("Erro ao buscar campanhas financeiras:", error));
-  
+
     axios.get("http://localhost:8080/listarCampanhasDeItens")
       .then(response => setCampanhasItens(response.data))
       .catch(error => console.error("Erro ao buscar campanhas de itens:", error));
   }, []);
 
   const handleDoar = (campanha) => {
-    navigate("/doacaoFinanceira", { state: { campanha }});
+    navigate("/doacaoFinanceira", { state: { campanha } });
   };
 
   const calcularDiasRestantes = (dataFim) => {
@@ -34,6 +37,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
+      
       <div className="container mt-4 home-container">
         <h2>Campanhas Financeiras</h2>
         {campanhasFinanceiras.length > 0 ? (
@@ -82,6 +86,7 @@ export default function Home() {
           ))
         )}
       </div>
+      <Footer />
     </div>
   );
 }

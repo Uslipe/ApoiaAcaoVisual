@@ -1,11 +1,16 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import './resources/navtrans.css';
+
+
 
 export default function NavBarTrans() {
     const token = localStorage.getItem("token");
+    const navigate = useNavigate(); // Para redirecionamento
     return (
-        <nav className="navLogin">
+        <div className="navbar-wrapper-trans">
+        <nav className="containerNav-trans navbar">
+        <button onClick={() => navigate(-1)} className="back-button"> {"<"} Voltar</button>
             <ul className="menu">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/">Campanhas</Link></li>
@@ -36,5 +41,6 @@ export default function NavBarTrans() {
             </ul>
 
         </nav>
+        </div>
     );
 }

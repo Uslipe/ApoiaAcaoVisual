@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate,useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './resources/style.css';
 
 export default function Navbar() {
@@ -14,32 +14,36 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
-      <ul className="menu">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Campanhas</Link></li>
-        <li><Link to="/CadastroOng">Contato</Link></li>
-        <li><Link to="/loginong">Sobre</Link></li>
-        <li className="areaOng"><Link to="/AreaOng">Área de ONGs</Link></li>
+    <div className="navbar-wrapper">
+      <nav className="containerNav navbar">
+        <ul className="menu">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/">Campanhas</Link></li>
+          <li><Link to="/CadastroOng">Contato</Link></li>
+          <li><Link to="/loginong">Sobre</Link></li>
+          <li className="areaOng"><Link to="/AreaOng">Área de ONGs</Link></li>
+        </ul>
+        <ul className="Loginbtn">
         <li className="icon-login">
-        {token ? (
-            location.pathname === "/perfil" ? (
-              <button className="nav-link btn-sair-da-conta" onClick={handleLogout}>
-                Sair da Conta
-              </button>
+            {token ? (
+              location.pathname === "/perfil" ? (
+                <button className="nav-link btn-sair-da-conta" onClick={handleLogout}>
+                  Sair da Conta
+                </button>
+              ) : (
+                <Link className="nav-link btn btn-light text-light px-3" to="/perfil">
+                  Ver Perfil
+                </Link>
+              )
             ) : (
-              <Link className="nav-link btn btn-light text-light px-3" to="/perfil">
-                Ver Perfil
+              <Link className="nav-link btn btn-light text-light px-3" to="/login">
+                Login
               </Link>
-            )
-          ) : (
-            <Link className="nav-link btn btn-light text-light px-3" to="/login">
-              Login
-            </Link>
-            
-          )}
-        </li>
-      </ul>
-    </nav>
+
+            )}
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 }

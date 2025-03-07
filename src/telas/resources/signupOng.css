@@ -21,7 +21,9 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    
   }
+
 
   .infoCadastro{
     display: flex;
@@ -33,6 +35,7 @@
     padding: 20px;
     margin: 20px;
     text-align: center;
+    
   }
 
   
@@ -148,4 +151,14 @@
 
 .back-button:hover {
   text-decoration: none;
+}
+
+.trilha{
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: #ffffff;
 }
