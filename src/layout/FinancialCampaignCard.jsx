@@ -8,7 +8,7 @@ export default function FinancialCampaignCard({
   metaValor,
   diasRestantes,
   onDoar,
-  idCampanhaFinanceira
+  idCampanhaFinanceira,
 }) {
   const [imagem, setImagem] = useState(null);
 
@@ -18,26 +18,32 @@ export default function FinancialCampaignCard({
   // Carrega a imagem da campanha
   useEffect(() => {
     console.log(`🔄 Buscando imagem para campanha ID: ${idCampanhaFinanceira}`);
-    axios.get(`http://localhost:8080/imagem/campanha/${idCampanhaFinanceira}`, {
-      responseType: 'arraybuffer',
-    }).then((response) => {
-      //Logs
-      console.log("✅ Imagem recebida com sucesso!");
-      console.log("📏 Tamanho da imagem (bytes):", response.data.byteLength);
-      console.log("📝 Tipo da imagem:", response.headers['content-type']);
+    axios
+      .get(`http://localhost:8080/imagem/campanha/${idCampanhaFinanceira}`, {
+        responseType: "arraybuffer",
+      })
+      .then((response) => {
+        //Logs
+        console.log("✅ Imagem recebida com sucesso!");
+        console.log("📏 Tamanho da imagem (bytes):", response.data.byteLength);
+        console.log("📝 Tipo da imagem:", response.headers["content-type"]);
 
-      const imageBlob = new Blob([response.data], { type: response.headers['content-type'] });
-      const imageUrl = URL.createObjectURL(imageBlob);
+        const imageBlob = new Blob([response.data], {
+          type: response.headers["content-type"],
+        });
+        const imageUrl = URL.createObjectURL(imageBlob);
 
-      console.log("🌐 URL gerada para a imagem:", imageUrl);
-      setImagem(imageUrl);
-    }).catch((error) => {
-      console.error("Erro ao buscar imagem da campanha:", error);
-    });
+        console.log("🌐 URL gerada para a imagem:", imageUrl);
+        setImagem(imageUrl);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar imagem da campanha:", error);
+      });
   }, [idCampanhaFinanceira, token]);
 
   // Evita divisão por zero e limita a duas casas decimais
-  const percentual = metaValor > 0 ? ((valorArrecadado / metaValor) * 100).toFixed(2) : 0;
+  const percentual =
+    metaValor > 0 ? ((valorArrecadado / metaValor) * 100).toFixed(2) : 0;
 
   return (
     <div 
@@ -98,8 +104,8 @@ export default function FinancialCampaignCard({
             className="progress-bar bg-success" 
             role="progressbar" 
             style={{ width: `${percentual}%` }}
-            aria-valuenow={percentual} 
-            aria-valuemin="0" 
+            aria-valuenow={percentual}
+            aria-valuemin="0"
             aria-valuemax="100"
           />
         </div>
