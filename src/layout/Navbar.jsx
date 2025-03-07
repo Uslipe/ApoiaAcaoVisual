@@ -13,22 +13,29 @@ export default function Navbar() {
     navigate("/");
   };
 
-  return (
+  const scrollToFooter = () => {
+    const footer = document.getElementById("footer");
+    if (footer) {
+      footer.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (  
     <div className="navbar-wrapper">
       <nav className="containerNav navbar">
         <ul className="menu">
-          <li><Link to="/"><i class="fa-solid fa-house"></i> Home</Link></li>
-          <li><Link to="/"><i class="fa-solid fa-bell"></i> Campanhas</Link></li>
-          <li><Link to="/CadastroOng"><i class="fa-solid fa-phone"></i> Contato</Link></li>
-          <li><Link to="/loginong"><i class="fa-solid fa-circle-info"></i> Sobre</Link></li>
-          <li className="areaOng"><Link to="/AreaOng"><i class="fa-solid fa-hand-holding-heart"></i> Área de ONGs</Link></li>
+          <li><Link to="/"><i className="fa-solid fa-house"></i> Home</Link></li>
+          <li><Link to="/"><i className="fa-solid fa-bell"></i> Campanhas</Link></li>
+          <li><Link to="/CadastroOng"><i className="fa-solid fa-phone"></i> Contato</Link></li>
+          <li><a className="about" onClick={scrollToFooter}><i className="fa-solid fa-circle-info"></i> Sobre</a></li>
+          <li className="areaOng"><Link to="/AreaOng"><i className="fa-solid fa-hand-holding-heart"></i> Área de ONGs</Link></li>
         </ul>
         <ul className="Loginbtn">
           <li className="icon-login">
             {token ? (
               location.pathname === "/perfil" ? (
                 <button className="nav-link btn-sair-da-conta" onClick={handleLogout}>
-                  <i class="fa-solid fa-circle-xmark"></i> Sair da Conta
+                  <i className="fa-solid fa-circle-xmark"></i> Sair da Conta
                 </button>
               ) : (
                 <div className="dropdown">
@@ -49,7 +56,7 @@ export default function Navbar() {
               )
             ) : (
               <Link className="nav-link btn btn-light text-light px-3" to="/login">
-                <i class="fa-solid fa-circle-user"></i> Login
+                <i className="fa-solid fa-circle-user"></i> Login
               </Link>
             )}
           </li>

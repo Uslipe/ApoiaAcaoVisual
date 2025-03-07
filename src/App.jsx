@@ -12,6 +12,7 @@ import LoginOng from "./telas/LoginOng";
 import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
 import NavbarOng from "./layout/NavbarOng";
+import NavbarLog from "./layout/NavbarLog"; // Corrigir a importação
 import AreaOng from "./telas/AreaOng";
 import VLibras from "@djpfs/react-vlibras"; // VLibras
 import "aos/dist/aos.css"; // AOS CSS
@@ -49,6 +50,7 @@ function App() {
           <Route path="/CadastroOng" element={<CadastroOng />} />
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
           <Route path="/NavbarOng" element={<NavbarOng />} />
+          <Route path="/NavbarLog" element={<NavbarLog />} />
           <Route path="/AreaOng" element={<AreaOng />} />
           <Route
             path="/historicoDoacoesDoador"

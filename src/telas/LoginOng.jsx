@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./resources/loginong.css";
 import logo from "./images/logo_doar.png";
-import NavBarTrans from "../layout/NavBarTrans";
+import NavbarLog from '../layout/NavbarLog';
 
 export default function Login() {
   const [cnpj, setCnpj] = useState("");
@@ -70,52 +70,54 @@ export default function Login() {
   };
 
   return (
+    <div className="consertar">
+      <div className="login-page">
 
-    <div className="login-page">
-      <NavBarTrans />
-      <p className="trilha">Home {">"} Login Ong </p>
-      <div className="container">
-        <div className="content">
-          <div className="infoLoginOng">
-            <h1>Faça seu login na
-              <br />
-              <strong>ApoiaAção</strong>
-            </h1>
-            <h2>
-              <span>... junte-se a suas
+        <NavbarLog />
+        <p className="trilha">Home {">"} Login Ong </p>
+        <div className="container">
+          <div className="content">
+            <div className="infoLoginOng">
+              <h1>Faça seu login na
                 <br />
-                causas e projetos favoritos!
-                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" style={{ fill: '#d86c6c' }} height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-              </span>
-            </h2>
-          </div>
-          <div className="main">
-            <div className="login">
-              <img src={logo} alt="Logo" width="180" height="180" className="login-logo" />
-              <form onSubmit={handleLogin}>
-                <label htmlFor="chk" aria-hidden="true">Login</label>
-                <input
-                  type="text"
-                  name="cnpj"
-                  placeholder="cnpj"
-                  required
-                  value={cnpj}
-                  onChange={(e) => setCnpj(e.target.value)}
-                />
-                <p id="output"></p>
-                <input
-                  type="password"
-                  name="pswd"
-                  placeholder="Senha"
-                  required
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                />
-                <button type="submit">Entrar</button>
-                <p className="toggle-text">
-                  Não tem uma conta? <Link to="/CadastroOng">Cadastre-se</Link>
-                </p>
-              </form>
+                <strong>ApoiaAção</strong>
+              </h1>
+              <h2>
+                <span>... junte-se a suas
+                  <br />
+                  causas e projetos favoritos!
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" style={{ fill: '#d86c6c' }} height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
+                </span>
+              </h2>
+            </div>
+            <div className="main">
+              <div className="login">
+                <img src={logo} alt="Logo" width="180" height="180" className="login-logo" />
+                <form onSubmit={handleLogin}>
+                  <label htmlFor="chk" aria-hidden="true">Login</label>
+                  <input
+                    type="text"
+                    name="cnpj"
+                    placeholder="cnpj"
+                    required
+                    value={cnpj}
+                    onChange={(e) => setCnpj(e.target.value)}
+                  />
+                  <p id="output"></p>
+                  <input
+                    type="password"
+                    name="pswd"
+                    placeholder="Senha"
+                    required
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                  />
+                  <button type="submit">Entrar</button>
+                  <p className="toggle-text">
+                    Não tem uma conta? <Link to="/CadastroOng">Cadastre-se</Link>
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </div>

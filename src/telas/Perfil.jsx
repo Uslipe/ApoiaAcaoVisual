@@ -161,7 +161,7 @@ export default function Perfil() {
         },
         {
           label: "Não",
-          onClick: () => {},
+          onClick: () => { },
         },
       ],
     });
