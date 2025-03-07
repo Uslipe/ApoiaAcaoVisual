@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+                                        import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../layout/Navbar";
 import "./resources/listarOngsADM.css";
@@ -23,10 +23,8 @@ export default function ListarOngsADM() {
 
         console.log("Resposta da API:", response.data);
 
-        // Ordenar as ONGs por nome (alfabeticamente)
-        const ongsOrdenadas = response.data.sort((a, b) =>
-          a.nome.localeCompare(b.nome),
-        );
+        // Ordenar as ONGs por ID (do menor para o maior)
+        const ongsOrdenadas = response.data.sort((a, b) => a.id - b.id);
 
         setOngs(ongsOrdenadas);
       } catch (error) {
