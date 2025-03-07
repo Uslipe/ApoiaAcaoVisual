@@ -118,7 +118,7 @@ export default function DoacaoFinanceira() {
             onChange={(e) => setValorDoacao(e.target.value)}
           />
           <button className="btn btn-primary" onClick={handleDoacao}>
-            Finalizar Doação
+            <i class="fa-solid fa-hand-holding-heart"></i> Finalizar Doação
           </button>
         </div>
         <div className="valor-predefinido mt-3 d-flex justify-content-center">
@@ -128,7 +128,7 @@ export default function DoacaoFinanceira() {
               className="btn btn-primary me-2"
               onClick={() => handleValorPreDefinido(valor)}
             >
-              Doe R$ {valor}
+              <i class="fa-solid fa-hand-holding-heart"></i> Doe R$ {valor}
             </button>
           ))}
         </div>

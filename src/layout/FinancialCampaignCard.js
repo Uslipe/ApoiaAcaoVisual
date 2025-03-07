@@ -64,12 +64,12 @@ export default function FinancialCampaignCard({
 
         {/* Barra de progresso */}
         <div className="progress mb-2" style={{ height: "10px" }}>
-          <div 
-            className="progress-bar bg-success" 
-            role="progressbar" 
+          <div
+            className="progress-bar bg-success"
+            role="progressbar"
             style={{ width: `${percentual}%` }}
-            aria-valuenow={percentual} 
-            aria-valuemin="0" 
+            aria-valuenow={percentual}
+            aria-valuemin="0"
             aria-valuemax="100"
           />
         </div>
@@ -79,12 +79,12 @@ export default function FinancialCampaignCard({
         <p className="text-muted">{diasRestantes} dias restantes</p>
 
         {/* Botão Doar */}
-        <button 
-          className="btn btn-primary" 
+        <button
+          className="btn btn-primary"
           style={{ position: "absolute", bottom: "10px", right: "10px" }}
           onClick={onDoar}
         >
-          Doar
+          <i class="fa-solid fa-hand-holding-heart"></i> Doar
         </button>
       </div>
     </div>

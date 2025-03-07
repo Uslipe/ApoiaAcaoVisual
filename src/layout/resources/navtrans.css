@@ -14,7 +14,7 @@
   position: fixed;
   z-index: 1000;
   top: 0;
-  
+
 
 }
 
@@ -27,7 +27,7 @@
   position: fixed;
   z-index: 1000;
   top: 0;
-  /* background: transparent 100%; */
+  background: transparent 100%;
   width: 1200px;
 }
 
@@ -234,4 +234,24 @@ svg {
   height: 30px;
   fill: #ecf0f1;
 
+}
+
+
+/* BOTAO DE VOLTAR */
+.back-button {
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  font-size: 14px;
+  /* Diminuir o tamanho da fonte */
+  cursor: pointer;
+  color: #000000;
+  padding: 2px 4px;
+  /* Ajustar o padding para diminuir o tamanho do botão */
+  margin: 2px;
+  /* Ajustar a margem para diminuir o tamanho do botão */
+}
+
+.back-button:hover {
+  text-decoration: none;
 }

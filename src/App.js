@@ -15,11 +15,12 @@ import NavbarOng from "./layout/NavbarOng";
 import AreaOng from "./telas/AreaOng";
 import VLibras from "@djpfs/react-vlibras"; // VLibras
 
+
 import "aos/dist/aos.css"; // AOS CSS
 import AOS from "aos";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // Font Awesome
-import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador"; 
-import HomeADM from "./telas/HomeADM"; 
+import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador";
+import HomeADM from "./telas/HomeADM";
 import ListarOngsADM from "./telas/ListarOngsADM";
 import ListarUsuariosADM from "./telas/ListarUsuariosADM";
 
@@ -56,7 +57,7 @@ function App() {
         </Routes>
 
         <div className="App">
-          {loaded && <VLibras forceOnload={true} />} 
+          {loaded && <VLibras forceOnload={true} />}
           <header className="App-header">
           </header>
         </div>

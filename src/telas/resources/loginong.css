@@ -1,5 +1,4 @@
-
-.login-page  {
+.login-page {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,15 +11,8 @@
   --black-color: #000000;
 }
 
-.login-page {
-  background-image: url(../images/background-image.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
 
-.container{
+.container {
   display: flex;
   flex-direction: row;
   width: 1200px;
@@ -28,7 +20,7 @@
 
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -37,7 +29,7 @@
   height: 100%;
 }
 
-.infoLoginOng{
+.infoLoginOng {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,25 +139,8 @@
   text-decoration: underline;
 }
 
-/* BOTAO DE VOLTAR */
-.back-button {
-  position: absolute;
-  width: 100%;
-  max-width: 100px;
-  top: -25px;
-  left: 10px;
-  font-size: 14px; /* Diminuir o tamanho da fonte */
-  cursor: pointer;
-  color: #000000;
-  padding: 2px 4px; /* Ajustar o padding para diminuir o tamanho do botão */
-  margin: 2px; /* Ajustar a margem para diminuir o tamanho do botão */
-}
 
-.back-button:hover {
-  text-decoration: none;
-}
-
-.trilha{
+.trilha {
   position: absolute;
   top: 30px;
   left: 10px;

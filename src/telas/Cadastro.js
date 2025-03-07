@@ -10,7 +10,7 @@ export default function Cadastro() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleCadastro = async (e) => {
     e.preventDefault();
@@ -50,10 +50,10 @@ export default function Cadastro() {
   };
 
   return (
-    <div className="signup-page">
+    <div className="login-page">
       <div className="main">
         <div className="signup">
-        <img src={logo} alt="Logo" width="180" heigh="180"className="signup-logo"/>
+          <img src={logo} alt="Logo" width="180" heigh="180" className="signup-logo" />
           <form onSubmit={handleCadastro}>
             <label htmlFor="chk" aria-hidden="true">Cadastre-se</label>
             <input

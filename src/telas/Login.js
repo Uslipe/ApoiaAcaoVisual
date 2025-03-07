@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -36,7 +36,7 @@ export default function Login() {
       });
 
       if (response.status === 200) {
-        const {token, idUsuario} = response.data; // O token e o id do usuário vem na resposta
+        const { token, idUsuario } = response.data; // O token e o id do usuário vem na resposta
         localStorage.setItem("token", token); // Armazena no localStorage
         localStorage.setItem("idUsuario", idUsuario); // Armazena o ID do usuário
 
@@ -69,8 +69,9 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="main">
+
         <div className="login">
-          <img src={logo} alt="Logo" width="180" heigh="180"className="login-logo"/>
+          <img src={logo} alt="Logo" width="180" heigh="180" className="login-logo" />
           <form onSubmit={handleLogin}>
             <label htmlFor="chk" aria-hidden="true">Login</label>
             <input
@@ -94,6 +95,8 @@ export default function Login() {
               Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link>
             </p>
           </form>
+
+
         </div>
       </div>
     </div>
