@@ -15,6 +15,7 @@ import NavbarOng from "./layout/NavbarOng";
 import AreaOng from "./telas/AreaOng";
 import VLibras from "@djpfs/react-vlibras"; // VLibras
 
+
 import "aos/dist/aos.css"; // AOS CSS
 import AOS from "aos";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // Font Awesome
@@ -62,7 +63,9 @@ function App() {
 
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
-          <header className="App-header"></header>
+          <header className="App-header">
+          </header>
+          {/* <header className="App-header"></header> */}
         </div>
       </div>
     </Router>

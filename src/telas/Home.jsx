@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      
+
       <div className="container mt-4 home-container">
         <h2>Campanhas Financeiras</h2>
         {campanhasFinanceiras.length > 0 ? (

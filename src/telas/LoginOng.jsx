@@ -90,7 +90,6 @@ export default function Login() {
             </h2>
           </div>
           <div className="main">
-
             <div className="login">
               <img src={logo} alt="Logo" width="180" height="180" className="login-logo" />
               <form onSubmit={handleLogin}>

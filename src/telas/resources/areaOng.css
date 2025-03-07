@@ -288,11 +288,11 @@
     border-left: 10px solid #eee;
 }
 
-.module .trigger:hover span{
+.module .trigger:hover span {
     min-width: 220px;
     border-radius: 22px 22px 0 0;
     transition: 350ms border-radius 0ms, 700ms color 700ms, 350ms min-width 0ms;
-    color:#ccc;
+    color: #ccc;
 }
 
 .module .trigger:hover ul.locations {
@@ -304,5 +304,3 @@
     opacity: 1;
     transition: 350ms opacity 700ms;
 }
-
-

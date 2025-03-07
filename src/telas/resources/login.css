@@ -1,5 +1,4 @@
-apoiaacao/src/telas/login.css */
-.login-page * {
+apoiaacao/src/telas/login.css */ .login-page * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,7 +33,7 @@ apoiaacao/src/telas/login.css */
 }
 
 .login-page .main {
-  width: 90%;
+  width: 50%;
   max-width: 400px;
   height: auto;
   background-color: #01c7c4;
@@ -42,7 +41,12 @@ apoiaacao/src/telas/login.css */
   box-shadow: 5px 20px 50px #000;
   padding: 20px;
   margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
 
 .login-logo {
   display: block;
