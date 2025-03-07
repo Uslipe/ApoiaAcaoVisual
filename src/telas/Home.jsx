@@ -5,7 +5,7 @@ import Slider from "react-slick"; // Importa o carrossel
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/footer";
 import FinancialCampaignCard from "../layout/FinancialCampaignCard";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./resources/home.css";
 
@@ -15,17 +15,27 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/listarCampanhasFinanceiras")
-      .then(response => setCampanhasFinanceiras(response.data))
-      .catch(error => console.error("Erro ao buscar campanhas financeiras:", error));
+    axios
+      .get("http://localhost:8080/listarCampanhasFinanceiras")
+      .then((response) => setCampanhasFinanceiras(response.data))
+      .catch((error) =>
+        console.error("Erro ao buscar campanhas financeiras:", error),
+      );
 
-    axios.get("http://localhost:8080/listarCampanhasDeItens")
-      .then(response => setCampanhasItens(response.data))
-      .catch(error => console.error("Erro ao buscar campanhas de itens:", error));
+    axios
+      .get("http://localhost:8080/listarCampanhasDeItens")
+      .then((response) => setCampanhasItens(response.data))
+      .catch((error) =>
+        console.error("Erro ao buscar campanhas de itens:", error),
+      );
   }, []);
 
   const handleDoar = (campanha) => {
     navigate("/doacaoFinanceira", { state: { campanha } });
+  };
+
+  const handleDoarItens = (campanha) => {
+    navigate("/doacaoItens", { state: { campanha } });
   };
 
   const calcularDiasRestantes = (dataFim) => {
@@ -49,22 +59,22 @@ export default function Home() {
         settings: {
           slidesToShow: 2, // Mostra 2 cards por vez
           slidesToScroll: 1,
-        }
+        },
       },
       {
         breakpoint: 768, // Celulares
         settings: {
           slidesToShow: 1, // Mostra 1 card por vez
           slidesToScroll: 1,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   return (
     <div>
       <Navbar />
-      
+
       <div className="container mt-4 home-container">
         <h2>Campanhas Financeiras</h2>
         {campanhasFinanceiras.length > 0 ? (
@@ -88,7 +98,7 @@ export default function Home() {
         )}
 
         <h2 className="mt-4">Campanhas de Itens</h2>
-        {campanhasItens.length > 0 && (
+        {campanhasItens.length > 0 &&
           campanhasItens.map((campanha) => (
             <div key={campanha.idCampanhaDeItens} className="card mb-3">
               <div className="card-body">
@@ -108,10 +118,15 @@ export default function Home() {
                   Itens entregues: {campanha.quantidadeDeItensEntregues} <br />
                   Categoria: {campanha.categoriaItens}
                 </p>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleDoarItens(campanha)}
+                >
+                  Doar
+                </button>
               </div>
             </div>
-          ))
-        )}
+          ))}
       </div>
       <Footer />
     </div>
