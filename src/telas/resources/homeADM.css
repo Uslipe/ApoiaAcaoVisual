@@ -1,0 +1,40 @@
+.home-adm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Centraliza verticalmente */
+  text-align: center;
+  margin-top: 50px;
+}
+
+.home-adm-container h2,
+.home-adm-container h3 {
+  margin-bottom: 20px; /* Espaçamento entre a navbar, título e botões */
+}
+
+.home-adm-container h2 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 400px; /* Limita a largura dos botões */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%; /* Faz os botões ocuparem toda a largura do container limitado */
+}
+
+.logout-button {
+  width: 100%; /* Faz o botão de sair ocupar toda a largura do container limitado */
+  max-width: 400px; /* Limita a largura do botão de sair */
+}

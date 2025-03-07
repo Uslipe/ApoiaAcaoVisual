@@ -18,6 +18,10 @@ import VLibras from "@djpfs/react-vlibras"; // VLibras
 import "aos/dist/aos.css"; // AOS CSS
 import AOS from "aos";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // Font Awesome
+import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador"; 
+import HomeADM from "./telas/HomeADM"; 
+import ListarOngsADM from "./telas/ListarOngsADM";
+import ListarUsuariosADM from "./telas/ListarUsuariosADM";
 
 function App() {
   useEffect(() => {
@@ -45,6 +49,10 @@ function App() {
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
           <Route path="/NavbarOng" element={<NavbarOng />} />
           <Route path="/AreaOng" element={<AreaOng />} />
+          <Route path="/historicoDoacoesDoador" element={<HistoricoDoacoesDoador />} />
+          <Route path="/homeADM" element={<HomeADM />} />
+          <Route path="/listarOngsADM" element={<ListarOngsADM />} />
+          <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
         </Routes>
 
         <div className="App">
