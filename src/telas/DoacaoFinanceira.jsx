@@ -11,6 +11,10 @@ export default function DoacaoFinanceira() {
   const { campanha } = location.state || {};
   const [valorDoacao, setValorDoacao] = useState("");
   const [metodoPagamento, setMetodoPagamento] = useState("CARTAO");
+  const [nomeTitular, setNomeTitular] = useState("");
+  const [digitosCartao, setDigitosCartao] = useState("");
+  const [dataDeValidade, setDataDeValidade] = useState("");
+  const [cvv, setCvv] = useState("");
 
   const handleDoacao = async () => {
     const token = localStorage.getItem("token");
@@ -37,28 +41,61 @@ export default function DoacaoFinanceira() {
       return;
     }
 
-    const notificacaoDeEspera = toast.info("Processando sua doação, por favor aguarde...", {
-      position: "top-right",
-      autoClose: false,
-      closeOnClick: false,
-      draggable: false,
-    });
+    const notificacaoDeEspera = toast.info(
+      "Processando sua doação, por favor aguarde...",
+      {
+        position: "top-right",
+        autoClose: false,
+        closeOnClick: false,
+        draggable: false,
+      },
+    );
 
     try {
-      const response = await axios.post("http://localhost:8080/salvarDoacaoFinanceira", {
-        valor: valorDoacao,
-        formaPagamento: metodoPagamento,
-        campanha: { idCampanhaFinanceira: campanha.idCampanhaFinanceira },
-        idUsuario: { id: idUsuario } // Referencia o ID do usuário logado
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      // Se o método de pagamento for cartão, primeiro cadastra o cartão
+      if (metodoPagamento === "CARTAO") {
+        // Adiciona um dia do mês à data de validade
+        const [ano, mes] = dataDeValidade.split("-");
+        const dataDeValidadeCompleta = `${ano}-${mes}-25`; // Adiciona o dia 25
+
+        const cartaoResponse = await axios.post(
+          "http://localhost:8080/cadastrarCartaoDeCredito",
+          {
+            nomeTitular,
+            digitosCartao,
+            dataDeValidade: dataDeValidadeCompleta,
+            cvv,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+
+        if (cartaoResponse.status !== 200) {
+          throw new Error("Erro ao cadastrar o cartão de crédito.");
         }
-      });
+      }
+
+      const doacaoResponse = await axios.post(
+        "http://localhost:8080/salvarDoacaoFinanceira",
+        {
+          valor: valorDoacao,
+          formaPagamento: metodoPagamento,
+          campanha: { idCampanhaFinanceira: campanha.idCampanhaFinanceira },
+          idUsuario: { id: idUsuario },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
       toast.dismiss(notificacaoDeEspera);
 
-      if (response.status === 201) {
+      if (doacaoResponse.status === 201) {
         toast.success("Doação realizada com sucesso!", {
           position: "top-right",
           autoClose: 3000,
@@ -70,9 +107,14 @@ export default function DoacaoFinanceira() {
         });
         setValorDoacao("");
         setMetodoPagamento("CARTAO");
+        setNomeTitular("");
+        setDigitosCartao("");
+        setDataDeValidade("");
+        setCvv("");
       }
     } catch (error) {
       console.error("Erro ao realizar doação:", error);
+      toast.dismiss(notificacaoDeEspera);
       toast.error("Falha ao realizar doação. Tente novamente.", {
         position: "top-right",
         autoClose: 3000,
@@ -89,6 +131,13 @@ export default function DoacaoFinanceira() {
     setValorDoacao(valor);
   };
 
+  const handleCvvChange = (e) => {
+    const value = e.target.value;
+    if (value.length <= 3) {
+      setCvv(value);
+    }
+  };
+
   if (!campanha) {
     return <p>Campanha não encontrada.</p>;
   }
@@ -99,7 +148,9 @@ export default function DoacaoFinanceira() {
       <div className="container mt-4 doacaoFinanceira-container">
         <div className="campanha-info">
           <h2>{campanha.nome}</h2>
-          <h6 className="text-muted">por: {campanha.idOng?.nome || "Desconhecida"}</h6>
+          <h6 className="text-muted">
+            por: {campanha.idOng?.nome || "Desconhecida"}
+          </h6>
         </div>
         <div className="input-group mt-3">
           <select
@@ -117,8 +168,60 @@ export default function DoacaoFinanceira() {
             value={valorDoacao}
             onChange={(e) => setValorDoacao(e.target.value)}
           />
+        </div>
+        {metodoPagamento === "CARTAO" && (
+          <div className="mt-3">
+            <div className="form-group">
+              <label htmlFor="nomeTitular">Nome do Titular</label>
+              <input
+                type="text"
+                className="form-control"
+                id="nomeTitular"
+                value={nomeTitular}
+                onChange={(e) => setNomeTitular(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="digitosCartao">Dígitos do Cartão</label>
+              <input
+                type="text"
+                className="form-control"
+                id="digitosCartao"
+                value={digitosCartao}
+                onChange={(e) => setDigitosCartao(e.target.value)}
+                maxLength="16"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="dataDeValidade">Data de Validade</label>
+              <input
+                type="month"
+                className="form-control"
+                id="dataDeValidade"
+                value={dataDeValidade}
+                onChange={(e) => setDataDeValidade(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="cvv">CVV</label>
+              <input
+                type="number"
+                className="form-control"
+                id="cvv"
+                value={cvv}
+                onChange={(e) => setCvv(e.target.value)}
+                onChange={handleCvvChange}
+                required
+              />
+            </div>
+          </div>
+        )}
+        <div className="input-group mt-3">
           <button className="btn btn-primary" onClick={handleDoacao}>
-            <i class="fa-solid fa-hand-holding-heart"></i> Finalizar Doação
+            Finalizar Doação
           </button>
         </div>
         <div className="valor-predefinido mt-3 d-flex justify-content-center">
@@ -128,7 +231,7 @@ export default function DoacaoFinanceira() {
               className="btn btn-primary me-2"
               onClick={() => handleValorPreDefinido(valor)}
             >
-              <i class="fa-solid fa-hand-holding-heart"></i> Doe R$ {valor}
+              <i className="fa-solid fa-hand-holding-heart"></i> Doe R$ {valor}
             </button>
           ))}
         </div>

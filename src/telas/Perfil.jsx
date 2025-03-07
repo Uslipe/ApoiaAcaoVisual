@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import Navbar from "../layout/Navbar";
 import "./resources/perfil.css";
 
@@ -148,15 +150,21 @@ export default function Perfil() {
   };
 
   const confirmDeleteAccount = () => {
-    if (window.confirm("Você tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.")) {
-      handleDeleteAccount();
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("idUsuario");
-    navigate("/login");
+    confirmAlert({
+      title: "Confirmação de Exclusão",
+      message:
+        "Você tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+      buttons: [
+        {
+          label: "Sim",
+          onClick: handleDeleteAccount,
+        },
+        {
+          label: "Não",
+          onClick: () => { },
+        },
+      ],
+    });
   };
 
   const handleHistoricoDoacoesDoador = () => {
@@ -235,7 +243,7 @@ export default function Perfil() {
             onChange={(e) => setConfirmarSenha(e.target.value)}
           />
           <button
-            className="btng btn btn-danger mt-3"
+            className="btn btn-danger mt-3"
             onClick={confirmDeleteAccount}
           >
             Excluir Conta
@@ -243,7 +251,10 @@ export default function Perfil() {
         </div>
         <h2>Gerenciamento de Perfil</h2>
         <div className="gerenciar-perfil">
-          <button className="btng  btn btn-primary mt-4" onClick={handleHistoricoDoacoesDoador}>
+          <button
+            className="btng  btn btn-primary mt-4"
+            onClick={handleHistoricoDoacoesDoador}
+          >
             Ver Histórico de Doações
           </button>
           <button className="btng  btn btn-danger mt-4" onClick={handleLogout}>

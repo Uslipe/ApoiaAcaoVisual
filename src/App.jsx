@@ -12,10 +12,9 @@ import LoginOng from "./telas/LoginOng";
 import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
 import NavbarOng from "./layout/NavbarOng";
+import NavbarLog from "./layout/NavbarLog"; // Corrigir a importação
 import AreaOng from "./telas/AreaOng";
 import VLibras from "@djpfs/react-vlibras"; // VLibras
-
-
 import "aos/dist/aos.css"; // AOS CSS
 import AOS from "aos";
 import "@fortawesome/fontawesome-free/css/all.min.css"; // Font Awesome
@@ -23,6 +22,7 @@ import HistoricoDoacoesDoador from "./telas/HistoricoDoacoesDoador";
 import HomeADM from "./telas/HomeADM";
 import ListarOngsADM from "./telas/ListarOngsADM";
 import ListarUsuariosADM from "./telas/ListarUsuariosADM";
+import DoacaoItens from "./telas/DoacaoItens";
 import ValidarOngADM from "./telas/ValidarOngADM";
 import DeletarCampanhasADM from "./telas/DeletarCampanhasADM";
 
@@ -51,6 +51,7 @@ function App() {
           <Route path="/CadastroOng" element={<CadastroOng />} />
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
           <Route path="/NavbarOng" element={<NavbarOng />} />
+          <Route path="/NavbarLog" element={<NavbarLog />} />
           <Route path="/AreaOng" element={<AreaOng />} />
           <Route
             path="/historicoDoacoesDoador"
@@ -59,11 +60,11 @@ function App() {
           <Route path="/homeADM" element={<HomeADM />} />
           <Route path="/listarOngsADM" element={<ListarOngsADM />} />
           <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
+          <Route path="/doacaoItens" element={<DoacaoItens />} />
           <Route path="/validarOngADM" element={<ValidarOngADM />} />
           <Route path="/deletarCampanhasADM" element={<DeletarCampanhasADM />}
           />
         </Routes>
-
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
           <header className="App-header">

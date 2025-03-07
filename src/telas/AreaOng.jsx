@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-toastify";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "./resources/areaOng.css";
 import logo from "./images/logo_doar.png";
 
-
-
-
-
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+export default function AreaOng() {
   const navigate = useNavigate(); // Para redirecionamento
   const location = useLocation();
 
@@ -30,76 +22,47 @@ export default function Login() {
     };
   }, [location, navigate]);
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post("http://localhost:8080/loginong", {
-        email,
-        senha,
-      });
-
-      if (response.status === 200) {
-        const { token, idUsuario } = response.data; // O token e o id do usuário vem na resposta
-        localStorage.setItem("token", token); // Armazena no localStorage
-        localStorage.setItem("idUsuario", idUsuario); // Armazena o ID do usuário
-
-        // Exibe uma notificação de sucesso
-        toast.success("Login realizado com sucesso!", {
-          position: "top-right",
-          autoClose: 3000, // Fecha automaticamente em 3 segundos
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-        });
-
-        setTimeout(() => {
-          navigate("/"); // Redireciona após exibir a notificação
-        }, 1000);
+    const token = localStorage.getItem("token");
+    if (token) {
+      const confirmLogout = window.confirm("Você já está logado. Deseja sair da conta atual?");
+      if (!confirmLogout) {
+        return;
       }
-    } catch (error) {
-      const tes = document.getElementById("chk").checked = false;
-
-      console.error("Erro ao fazer login:", error);
-      toast.error("Falha ao fazer login. Verifique os dados e tente novamente.", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: true,
-        pauseOnHover: false,
-      });
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
     }
+
+    navigate("/loginOng");
+  };
+
+  const handleCadastro = (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      const confirmLogout = window.confirm("Você já está logado. Deseja sair da conta atual?");
+      if (!confirmLogout) {
+        return;
+      }
+      localStorage.removeItem("token");
+      localStorage.removeItem("idUsuario");
+    }
+
+    navigate("/CadastroOng");
   };
 
   return (
-
     <div className="AreaOng">
-       {/* menu drop */}
-       <div className="module">
-          <div className="trigger">
-            <span><em></em>Perfil</span>
-            <ul className="locations">
-              <li><a href="#"> Nome </a></li>
-              <li><a href="#"> Nome </a></li>
-              <li><a href="#"> Nome </a></li>
-              <li><a href="#"> Nome </a></li>
-              <li><a href="#"> Nome </a></li>
-            </ul>
-
-          </div>
-
-        </div>
-        {/* fim do menu drop */}
       <div className="mainOng">
         <button onClick={() => navigate(-1)} className="back-button"> {"<"} Voltar</button>
       </div>
       <div className="navNew">
         <img src={logo} alt="Logo" width="90" height="90" className="login-logo" />
-
       </div>
       <div className="container">
-
         <p className="trilha">Home {">"} Área de Ongs </p>
         <div className="info">
           <div className="txt">
@@ -114,19 +77,17 @@ export default function Login() {
             </h3>
           </div>
         </div>
-
         <div className="login-cadastro">
           <div className="inTxt">
             <p><strong>FAÇA LOGIN OU CADASTRE-SE PARA OBTER ACESSO</strong></p>
           </div>
         </div>
-
         <div className="btn-botoes">
           <div className="container-bl">
             <div className="btn-login">
               <p className="paragraph-login">
                 <span>ENTRE COM SEU LOGIN E SENHA</span>
-                <a class="paragraph-button-login" href="/loginOng"><strong>ENTRAR</strong></a>
+                <a className="paragraph-button-login" href="#" onClick={handleLogin}><strong>ENTRAR</strong></a>
               </p>
             </div>
           </div>
@@ -134,18 +95,14 @@ export default function Login() {
             <div className="btn-cadastro">
               <div className="btn-login">
                 <p className="paragraph-login">
-                <span> AINDA NÃO TEM CONTA? CRIE AGORA MESMO!</span>
-                  <a class="paragraph-button-login" href="/CadastroOng"><strong>CADASTRE-SE</strong></a>
+                  <span> AINDA NÃO TEM CONTA? CRIE AGORA MESMO!</span>
+                  <a className="paragraph-button-login" href="#" onClick={handleCadastro}><strong>CADASTRE-SE</strong></a>
                 </p>
               </div>
             </div>
           </div>
         </div>
-       
       </div>
-      
     </div>
-
   );
 }
-
