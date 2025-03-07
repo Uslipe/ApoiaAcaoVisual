@@ -96,7 +96,7 @@ export default function Perfil() {
     }
   };
 
-  const handleDeleteAccount = async () => {
+   const handleDeleteAccount = async () => {
     const token = localStorage.getItem("token");
     const id = localStorage.getItem("idUsuario");
 

@@ -7,6 +7,9 @@ import "./resources/areaOng.css";
 import logo from "./images/logo_doar.png";
 
 
+
+
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -72,6 +75,22 @@ export default function Login() {
   return (
 
     <div className="AreaOng">
+       {/* menu drop */}
+       <div className="module">
+          <div className="trigger">
+            <span><em></em>Perfil</span>
+            <ul className="locations">
+              <li><a href="#"> Nome </a></li>
+              <li><a href="#"> Nome </a></li>
+              <li><a href="#"> Nome </a></li>
+              <li><a href="#"> Nome </a></li>
+              <li><a href="#"> Nome </a></li>
+            </ul>
+
+          </div>
+
+        </div>
+        {/* fim do menu drop */}
       <div className="mainOng">
         <button onClick={() => navigate(-1)} className="back-button"> {"<"} Voltar</button>
       </div>
@@ -122,7 +141,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-
+       
       </div>
       
     </div>

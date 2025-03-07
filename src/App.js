@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./telas/Home";
 import Login from "./telas/Login";
 import Cadastro from "./telas/Cadastro";
@@ -11,10 +11,25 @@ import Perfil from "./telas/Perfil";
 import LoginOng from "./telas/LoginOng";
 import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
+import NavbarOng from "./layout/NavbarOng";
 import AreaOng from "./telas/AreaOng";
+import VLibras from "@djpfs/react-vlibras"; // VLibras
 
+import "aos/dist/aos.css"; // AOS CSS
+import AOS from "aos";
+import "@fortawesome/fontawesome-free/css/all.min.css"; // Font Awesome
 
 function App() {
+  useEffect(() => {
+    AOS.init(); // Inicializa a animação AOS
+  }, []);
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -28,8 +43,15 @@ function App() {
           <Route path="/loginong" element={<LoginOng />} />
           <Route path="/CadastroOng" element={<CadastroOng />} />
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
+          <Route path="/NavbarOng" element={<NavbarOng />} />
           <Route path="/AreaOng" element={<AreaOng />} />
         </Routes>
+
+        <div className="App">
+          {loaded && <VLibras forceOnload={true} />} 
+          <header className="App-header">
+          </header>
+        </div>
       </div>
     </Router>
   );
