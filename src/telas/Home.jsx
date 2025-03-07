@@ -43,6 +43,8 @@ export default function Home() {
     slidesToShow: 3, // Exibe 3 campanhas por vez
     slidesToScroll: 1,
     arrows: true, // Habilita as setas de navegação
+    autoplay: true, // Habilita o autoplay
+    autoplaySpeed: 2000, // Define a velocidade do autoplay (2 segundos)
     responsive: [
       {
         breakpoint: 1024, // Tablets e telas médias

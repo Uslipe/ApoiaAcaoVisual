@@ -23,6 +23,20 @@ apoiaacao/src/telas/login.css */ .login-page * {
   background-attachment: fixed;
 }
 
+.Toastify__toast--success {
+  background-color: #28a745 !important;
+  /* Cor verde */
+  color: #fff !important;
+  /* Cor do texto */
+}
+
+.Toastify__toast--error {
+  background-color: #c31b1b !important;
+  /* Cor verde */
+  color: #fff !important;
+  /* Cor do texto */
+}
+
 .login-page a {
   text-decoration: none;
   color: var(--second-color);
