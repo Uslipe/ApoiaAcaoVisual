@@ -124,7 +124,7 @@ export default function Home() {
                   className="btn btn-primary"
                   onClick={() => handleDoarItens(campanha)}
                 >
-                  Doar
+                  <i class="fa-solid fa-hand-holding-heart"></i> Doar
                 </button>
               </div>
             </div>

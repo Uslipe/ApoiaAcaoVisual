@@ -20,13 +20,13 @@ export default function Navbar() {
     }
   };
 
-  return (  
+  return (
     <div className="navbar-wrapper">
       <nav className="containerNav navbar">
         <ul className="menu">
           <li><Link to="/"><i className="fa-solid fa-house"></i> Home</Link></li>
           <li><Link to="/"><i className="fa-solid fa-bell"></i> Campanhas</Link></li>
-          <li><Link to="/CadastroOng"><i className="fa-solid fa-phone"></i> Contato</Link></li>
+          <li><a className="about" onClick={scrollToFooter}><i className="fa-solid fa-phone"></i> Contato</a></li>
           <li><a className="about" onClick={scrollToFooter}><i className="fa-solid fa-circle-info"></i> Sobre</a></li>
           <li className="areaOng"><Link to="/AreaOng"><i className="fa-solid fa-hand-holding-heart"></i> Área de ONGs</Link></li>
         </ul>
@@ -38,6 +38,7 @@ export default function Navbar() {
                   <i className="fa-solid fa-circle-xmark"></i> Sair da Conta
                 </button>
               ) : (
+                // DROPBAR
                 <div className="dropdown">
                   <div className="btPerfil">
                     <span className="">
@@ -49,10 +50,11 @@ export default function Navbar() {
                     <ul className="locations">
                       <li><a href="/perfil"> Gerenciar Perfil </a></li>
                       <li><a href="/HistoricoDoacoesDoador"> Ver históricos de doações </a></li>
-                      <li><button onClick={handleLogout} className="dropdown-logout"> Sair da Conta </button></li>
+                      <li className="logoutbt"><button onClick={handleLogout} className="dropdown-logout"> Sair da Conta </button></li>
                     </ul>
                   </div>
                 </div>
+                // FIM DROPBAR
               )
             ) : (
               <Link className="nav-link btn btn-light text-light px-3" to="/login">

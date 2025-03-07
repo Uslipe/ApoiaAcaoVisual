@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Navbar from "../layout/Navbar";
 import "./resources/doacaoItens.css";
+import doacao_roupa from "./images/doacao_roupa.png";
 
 export default function DoacaoItens() {
   const location = useLocation();
@@ -87,14 +88,25 @@ export default function DoacaoItens() {
     <div>
       <Navbar />
       <div className="container mt-4 doacaoItens-container">
+        <div>
+          <img className="roupa" src={doacao_roupa} alt="imagens de roupas" />
+        </div>
         <div className="campanha-info">
           <h2>{campanha.nome}</h2>
           <h6 className="text-muted">
             por: {campanha.idOng?.nome || "Desconhecida"}
           </h6>
-          <p className="text-muted">Categoria: {campanha.categoriaItens}</p>
+          <p className="text-muted">Categoria: <strong>{campanha.categoriaItens}</strong></p>
+          <p className="text-muted">
+            Endereço de Entrega:{" "}
+            {campanha.idOng?.endereco || "Endereço não disponível"}
+          </p>
         </div>
-        <div className="input-group mt-3">
+        {/* botao de doar */}
+
+      </div>
+      <div className="container">
+        <div className=" input-group mt-3">
           <input
             type="number"
             className="form-control"
@@ -103,8 +115,8 @@ export default function DoacaoItens() {
             onChange={(e) => setQuantidade(e.target.value)}
             required
           />
-          <button className="btn btn-primary" onClick={handleDoacao}>
-            Finalizar Doação
+          <button className="fimDoar" onClick={handleDoacao}>
+            <i class="fa-solid fa-hand-holding-heart"></i> Finalizar Doação
           </button>
         </div>
       </div>

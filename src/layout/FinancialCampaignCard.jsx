@@ -46,15 +46,15 @@ export default function FinancialCampaignCard({
     metaValor > 0 ? ((valorArrecadado / metaValor) * 100).toFixed(2) : 0;
 
   return (
-    <div 
-      className="card shadow-sm m-2 p-3 d-flex flex-column justify-content-between" 
+    <div
+      className="card shadow-sm m-2 p-3 d-flex flex-column justify-content-between"
       style={{ width: "18rem", minHeight: "470px", maxHeight: "350px" }} // Define altura fixa
     >
       <div className="card-body d-flex flex-column">
-        
+
         {/* Imagem no topo */}
-        <div 
-          className="card-img-top" 
+        <div
+          className="card-img-top"
           style={{ height: "150px", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden" }}
         >
           {imagem ? (
@@ -70,13 +70,13 @@ export default function FinancialCampaignCard({
         </div>
 
         {/* Título truncado */}
-        <h5 
-          className="card-title fw-bold mt-2" 
-          style={{ 
-            fontSize: "1rem", 
-            whiteSpace: "nowrap", 
-            overflow: "hidden", 
-            textOverflow: "ellipsis" 
+        <h5
+          className="card-title fw-bold mt-2"
+          style={{
+            fontSize: "1rem",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
           }}
           title={nome}
         >
@@ -84,7 +84,7 @@ export default function FinancialCampaignCard({
         </h5>
 
         {/* Descrição truncada */}
-        <p 
+        <p
           className="card-text text-muted flex-grow-1"
           style={{
             fontSize: "0.9rem",
@@ -100,9 +100,9 @@ export default function FinancialCampaignCard({
 
         {/* Barra de progresso */}
         <div className="progress mb-2" style={{ height: "8px" }}>
-          <div 
-            className="progress-bar bg-success" 
-            role="progressbar" 
+          <div
+            className="progress-bar bg-success"
+            role="progressbar"
             style={{ width: `${percentual}%` }}
             aria-valuenow={percentual}
             aria-valuemin="0"
@@ -115,11 +115,11 @@ export default function FinancialCampaignCard({
         <p className="text-muted" style={{ fontSize: "0.8rem" }}>{diasRestantes} dias restantes</p>
 
         {/* Botão fixo no fim */}
-        <button 
-          className="btn btn-primary w-100 mt-2" 
+        <button
+          className="btn btn-primary w-100 mt-2"
           onClick={onDoar}
         >
-          Doar
+          <i class="fa-solid fa-hand-holding-heart"></i> Doar
         </button>
       </div>
     </div>
