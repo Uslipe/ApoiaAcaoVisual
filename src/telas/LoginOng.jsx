@@ -37,9 +37,9 @@ export default function Login() {
       });
 
       if (response.status === 200) {
-        const { token } = response.data; // O token e o id do usuário vem na resposta
-        localStorage.setItem("token", token); // Armazena no localStorage
-
+        const { token, id } = response.data;
+        localStorage.setItem("token", token); // Armazena o token no localStorage
+        localStorage.setItem("id", id); // Armazena o ID da ONG no localStorage
 
         // Exibe uma notificação de sucesso
         toast.success("Login realizado com sucesso!", {
