@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import './resources/style.css';
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "./resources/style.css";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("idUsuario");
+    localStorage.removeItem("id");
     navigate("/");
   };
 
@@ -20,21 +21,45 @@ export default function Navbar() {
     }
   };
 
-  return (  
+  return (
     <div className="navbar-wrapper">
       <nav className="containerNav navbar">
         <ul className="menu">
-          <li><Link to="/"><i className="fa-solid fa-house"></i> Home</Link></li>
-          <li><Link to="/"><i className="fa-solid fa-bell"></i> Campanhas</Link></li>
-          <li><Link to="/CadastroOng"><i className="fa-solid fa-phone"></i> Contato</Link></li>
-          <li><a className="about" onClick={scrollToFooter}><i className="fa-solid fa-circle-info"></i> Sobre</a></li>
-          <li className="areaOng"><Link to="/AreaOng"><i className="fa-solid fa-hand-holding-heart"></i> Área de ONGs</Link></li>
+          <li>
+            <Link to="/">
+              <i className="fa-solid fa-house"></i> Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/">
+              <i className="fa-solid fa-bell"></i> Campanhas
+            </Link>
+          </li>
+          <li>
+            <Link to="/CadastroOng">
+              <i className="fa-solid fa-phone"></i> Contato
+            </Link>
+          </li>
+          <li>
+            <a className="about" onClick={scrollToFooter}>
+              <i className="fa-solid fa-circle-info"></i> Sobre
+            </a>
+          </li>
+          <li className="areaOng">
+            <Link to="/AreaOng">
+              <i className="fa-solid fa-hand-holding-heart"></i> Área de ONGs
+            </Link>
+          </li>
         </ul>
         <ul className="Loginbtn">
           <li className="icon-login">
             {token ? (
-              location.pathname === "/perfil" ? (
-                <button className="nav-link btn-sair-da-conta" onClick={handleLogout}>
+              location.pathname === "/perfil" ||
+              location.pathname === "/perfilOng" ? (
+                <button
+                  className="nav-link btn-sair-da-conta"
+                  onClick={handleLogout}
+                >
                   <i className="fa-solid fa-circle-xmark"></i> Sair da Conta
                 </button>
               ) : (
@@ -47,15 +72,33 @@ export default function Navbar() {
                   </div>
                   <div className="dropdown-content">
                     <ul className="locations">
-                      <li><a href="/perfil"> Gerenciar Perfil </a></li>
-                      <li><a href="/HistoricoDoacoesDoador"> Ver históricos de doações </a></li>
-                      <li><button onClick={handleLogout} className="dropdown-logout"> Sair da Conta </button></li>
+                      <li>
+                        <a href="/perfil"> Gerenciar Perfil </a>
+                      </li>
+                      <li>
+                        <a href="/HistoricoDoacoesDoador">
+                          {" "}
+                          Ver históricos de doações{" "}
+                        </a>
+                      </li>
+                      <li>
+                        <button
+                          onClick={handleLogout}
+                          className="dropdown-logout"
+                        >
+                          {" "}
+                          Sair da Conta{" "}
+                        </button>
+                      </li>
                     </ul>
                   </div>
                 </div>
               )
             ) : (
-              <Link className="nav-link btn btn-light text-light px-3" to="/login">
+              <Link
+                className="nav-link btn btn-light text-light px-3"
+                to="/login"
+              >
                 <i className="fa-solid fa-circle-user"></i> Login
               </Link>
             )}
