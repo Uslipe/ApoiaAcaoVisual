@@ -19,7 +19,7 @@ export default function ItemCampaignCard({
   useEffect(() => {
     console.log(`🔄 Buscando imagem para campanha de itens ID: ${idCampanhaDeItens}`);
     axios
-      .get(`http://localhost:8080/imagem/campanha_de_itens/${idCampanhaDeItens}`, {
+      .get(`http://localhost:8080/imagem/campanhaDeItens/${idCampanhaDeItens}`, {
         responseType: "arraybuffer",
       })
       .then((response) => {
