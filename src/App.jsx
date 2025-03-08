@@ -27,6 +27,7 @@ import DoacaoItens from "./telas/DoacaoItens";
 import ValidarOngADM from "./telas/ValidarOngADM";
 import DeletarCampanhasADM from "./telas/DeletarCampanhasADM";
 import CriarCampanhaFinanceira from "./telas/CriarCampanhaFinanceira";
+import CriarCampanhaItens from "./telas/CriarCampanhaItens";
 
 function App() {
   useEffect(() => {
@@ -73,6 +74,7 @@ function App() {
             path="/criarCampanhaFinanceira"
             element={<CriarCampanhaFinanceira />}
           />
+          <Route path="/criarCampanhaItens" element={<CriarCampanhaItens />} />
         </Routes>
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
