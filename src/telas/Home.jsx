@@ -20,14 +20,14 @@ export default function Home() {
       .get("http://localhost:8080/listarCampanhasFinanceiras")
       .then((response) => setCampanhasFinanceiras(response.data))
       .catch((error) =>
-        console.error("Erro ao buscar campanhas financeiras:", error),
+        console.error("Erro ao buscar campanhas financeiras:", error)
       );
 
     axios
       .get("http://localhost:8080/listarCampanhasDeItens")
       .then((response) => setCampanhasItens(response.data))
       .catch((error) =>
-        console.error("Erro ao buscar campanhas de itens:", error),
+        console.error("Erro ao buscar campanhas de itens:", error)
       );
   }, []);
 
@@ -54,7 +54,7 @@ export default function Home() {
     slidesToShow: 3, // Exibe 3 campanhas por vez
     slidesToScroll: 1,
     arrows: true, // Habilita as setas de navegação
-    autoplay: true, // Habilita o autoplay
+    autoplay: false, // Habilita o autoplay
     autoplaySpeed: 2000, // Define a velocidade do autoplay (2 segundos)
     responsive: [
       {
@@ -78,7 +78,7 @@ export default function Home() {
     <div>
       <Navbar />
 
-      <div className="container mt-4 home-container">
+      <div className="container mt-4 home-container" style={{paddingBottom: "5%"}}>
         <h2>Campanhas Financeiras</h2>
         {campanhasFinanceiras.length > 0 ? (
           <Slider {...settings}>
@@ -100,20 +100,24 @@ export default function Home() {
           <p>Nenhuma campanha disponível.</p>
         )}
 
-        <h2 className="mt-4">Campanhas de Itens</h2>
+        <h2 className="mt-4" style={{paddingTop: "5%"}}>Campanhas de Itens</h2>
         {campanhasItens.length > 0 ? (
-          campanhasItens.map((campanha) => (
-            <ItemCampaignCard
-              key={campanha.idCampanhaDeItens}
-              nome={campanha.nome}
-              descricao={campanha.descricao}
-              quantidadeDeItens={campanha.quantidadeDeItens}
-              quantidadeDeItensEntregues={campanha.quantidadeDeItensEntregues}
-              diasRestantes={calcularDiasRestantes(campanha.dataFim)}
-              onDoar={() => handleDoarItens(campanha)}
-              idCampanhaDeItens={campanha.idCampanhaDeItens}
-            />
-          ))
+          <Slider {...settings}>
+            {campanhasItens.map((campanha) => (
+              <div key={campanha.idCampanhaDeItens}>
+                <ItemCampaignCard
+                  nome={campanha.nome}
+                  descricao={campanha.descricao}
+                  quantidadeDeItens={campanha.quantidadeDeItens}
+                  quantidadeDeItensEntregues={campanha.quantidadeDeItensEntregues}
+                  diasRestantes={calcularDiasRestantes(campanha.dataFim)}
+                  onDoar={() => handleDoarItens(campanha)}
+                  idCampanhaDeItens={campanha.idCampanhaDeItens}
+                  itensACaminho={campanha.itensACaminho}
+                />
+              </div>
+            ))}
+          </Slider>
         ) : (
           <p>Nenhuma campanha de itens disponível.</p>
         )}
