@@ -6,6 +6,7 @@ export default function ItemCampaignCard({
   descricao,
   quantidadeDeItens,
   quantidadeDeItensEntregues,
+  itensACaminho,
   diasRestantes,
   onDoar,
   idCampanhaDeItens,
@@ -42,10 +43,12 @@ export default function ItemCampaignCard({
 
   // Calcula o percentual dos itens
   const percentualEntregue = quantidadeDeItens > 0 ? ((quantidadeDeItensEntregues / quantidadeDeItens) * 100).toFixed(2) : 0;
-  const percentualAcamino = quantidadeDeItens > 0 ? (((quantidadeDeItens - quantidadeDeItensEntregues) / quantidadeDeItens) * 100).toFixed(2) : 0;
+  const percentualAcamino = quantidadeDeItens > 0 ? (((itensACaminho / quantidadeDeItensEntregues)) * 100).toFixed(2) : 0;
+
+  const quantidadeDoada = quantidadeDeItensEntregues + itensACaminho;
 
   return (
-    <div className="card shadow-sm m-2 p-3 d-flex flex-column justify-content-between" style={{ width: "18rem", minHeight: "470px", maxHeight: "350px" }}>
+    <div className="card shadow-sm m-2 p-3 d-flex flex-column justify-content-between" style={{ width: "18rem", minHeight: "580px", maxHeight: "350px" }}>
       <div className="card-body d-flex flex-column">
         {/* Imagem no topo */}
         <div className="card-img-top" style={{ height: "150px", display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
@@ -94,9 +97,11 @@ export default function ItemCampaignCard({
           />
         </div>
 
-        <p className="mb-1" style={{ fontSize: "0.9rem" }}>{percentualEntregue}% de itens entregues</p>
+        <p className="mb-1" style={{ fontSize: "0.9rem",  marginTop: "7%" }}>{percentualEntregue}% de itens entregues</p>
+        <p className="mb-1" style={{ fontSize: "0.9rem" }}>Total de itens doados: {quantidadeDoada}</p>
         <p className="mb-1" style={{ fontSize: "0.9rem" }}>Itens entregues: {quantidadeDeItensEntregues} / {quantidadeDeItens}</p>
-        <p className="text-muted" style={{ fontSize: "0.8rem" }}>{diasRestantes} dias restantes</p>
+        <p className="mb-1" style={{ fontSize: "0.9rem" }}>Itens a caminho: {itensACaminho}</p>
+        <p className="text-muted" style={{ fontSize: "0.8rem",  marginTop: "7%"}}>{diasRestantes} dias restantes</p>
 
         {/* Botão fixo no fim */}
         <button className="btn btn-primary w-100 mt-2" onClick={onDoar}>

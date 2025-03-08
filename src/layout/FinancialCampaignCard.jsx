@@ -48,7 +48,7 @@ export default function FinancialCampaignCard({
   return (
     <div 
       className="card shadow-sm m-2 p-3 d-flex flex-column justify-content-between" 
-      style={{ width: "18rem", minHeight: "470px", maxHeight: "350px" }} // Define altura fixa
+      style={{ width: "18rem", minHeight: "500px", maxHeight: "350px" }} // Define altura fixa
     >
       <div className="card-body d-flex flex-column">
         
@@ -112,7 +112,7 @@ export default function FinancialCampaignCard({
 
         <p className="mb-1" style={{ fontSize: "0.9rem" }}>{percentual}% arrecadado</p>
         <p className="mb-1" style={{ fontSize: "0.9rem" }}>R$ {valorArrecadado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} arrecadados</p>
-        <p className="text-muted" style={{ fontSize: "0.8rem" }}>{diasRestantes} dias restantes</p>
+        <p className="text-muted" style={{ fontSize: "0.8rem", marginTop: "7%" }}>{diasRestantes} dias restantes</p>
 
         {/* Botão fixo no fim */}
         <button 
