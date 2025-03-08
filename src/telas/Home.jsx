@@ -5,6 +5,7 @@ import Slider from "react-slick"; // Importa o carrossel
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/footer";
 import FinancialCampaignCard from "../layout/FinancialCampaignCard";
+import ItemCampaignCard from "../layout/ItemCampaignCard"; // Importa o novo componente
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./resources/home.css";
@@ -100,36 +101,24 @@ export default function Home() {
         )}
 
         <h2 className="mt-4">Campanhas de Itens</h2>
-        {campanhasItens.length > 0 &&
+        {campanhasItens.length > 0 ? (
           campanhasItens.map((campanha) => (
-            <div key={campanha.idCampanhaDeItens} className="card mb-3">
-              <div className="card-body">
-                <h5 className="card-title">{campanha.nome}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">
-                  ONG: {campanha.idOng?.nome || "Desconhecida"}
-                </h6>
-                <p className="card-text">{campanha.descricao}</p>
-                <p className="card-text">
-                  <small className="text-muted">
-                    Início: {campanha.dataInicio} | Fim: {campanha.dataFim}
-                  </small>
-                </p>
-                <p className="card-text">
-                  Endereço de entrega: {campanha.endereco} <br />
-                  Quantidade de itens: {campanha.quantidadeDeItens} <br />
-                  Itens entregues: {campanha.quantidadeDeItensEntregues} <br />
-                  Categoria: {campanha.categoriaItens}
-                </p>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => handleDoarItens(campanha)}
-                >
-                  Doar
-                </button>
-              </div>
-            </div>
-          ))}
+            <ItemCampaignCard
+              key={campanha.idCampanhaDeItens}
+              nome={campanha.nome}
+              descricao={campanha.descricao}
+              quantidadeDeItens={campanha.quantidadeDeItens}
+              quantidadeDeItensEntregues={campanha.quantidadeDeItensEntregues}
+              diasRestantes={calcularDiasRestantes(campanha.dataFim)}
+              onDoar={() => handleDoarItens(campanha)}
+              idCampanhaDeItens={campanha.idCampanhaDeItens}
+            />
+          ))
+        ) : (
+          <p>Nenhuma campanha de itens disponível.</p>
+        )}
       </div>
+
       <Footer />
     </div>
   );
