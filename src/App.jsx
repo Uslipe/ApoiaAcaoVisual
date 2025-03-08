@@ -26,6 +26,7 @@ import ListarUsuariosADM from "./telas/ListarUsuariosADM";
 import DoacaoItens from "./telas/DoacaoItens";
 import ValidarOngADM from "./telas/ValidarOngADM";
 import DeletarCampanhasADM from "./telas/DeletarCampanhasADM";
+import CriarCampanhaFinanceira from "./telas/CriarCampanhaFinanceira";
 
 function App() {
   useEffect(() => {
@@ -64,13 +65,18 @@ function App() {
           <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
           <Route path="/doacaoItens" element={<DoacaoItens />} />
           <Route path="/validarOngADM" element={<ValidarOngADM />} />
-          <Route path="/deletarCampanhasADM" element={<DeletarCampanhasADM />}
+          <Route
+            path="/deletarCampanhasADM"
+            element={<DeletarCampanhasADM />}
+          />
+          <Route
+            path="/criarCampanhaFinanceira"
+            element={<CriarCampanhaFinanceira />}
           />
         </Routes>
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
-          <header className="App-header">
-          </header>
+          <header className="App-header"></header>
           {/* <header className="App-header"></header> */}
         </div>
       </div>

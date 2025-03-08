@@ -52,6 +52,27 @@ export default function Navbar() {
               <i className="fa-solid fa-hand-holding-heart"></i> Área de ONGs
             </Link>
           </li>
+          {roles.includes("ROLE_ONG") && (
+            <li className="dropdown">
+              <button className="dropdown-toggle">
+                <i className="fa-solid fa-plus"></i> Criar Campanha
+              </button>
+              <div className="dropdown-content">
+                <ul>
+                  <li>
+                    <Link to="/criarCampanhaFinanceira">
+                      Criar Campanha Financeira
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/criarCampanhaItens">
+                      Criar Campanha de Itens
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          )}
         </ul>
         <ul className="Loginbtn">
           <li className="icon-login">
@@ -86,7 +107,10 @@ export default function Navbar() {
                             <a href="/perfilOng"> Gerenciar Perfil </a>
                           </li>
                           <li>
-                            <a href="/AreaOng"> Área da ONG </a>
+                            <a href="/gerenciarCampanhas">
+                              {" "}
+                              Gerenciar Campanhas{" "}
+                            </a>
                           </li>
                         </>
                       ) : (
