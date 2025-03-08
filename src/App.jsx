@@ -8,6 +8,7 @@ import Login from "./telas/Login";
 import Cadastro from "./telas/Cadastro";
 import DoacaoFinanceira from "./telas/DoacaoFinanceira";
 import Perfil from "./telas/Perfil";
+import PerfilOng from "./telas/PerfilOng";
 import LoginOng from "./telas/LoginOng";
 import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
@@ -46,6 +47,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/doacaoFinanceira" element={<DoacaoFinanceira />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/perfilOng" element={<PerfilOng />} />
           <Route path="/loginong" element={<LoginOng />} />
           <Route path="/CadastroOng" element={<CadastroOng />} />
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
