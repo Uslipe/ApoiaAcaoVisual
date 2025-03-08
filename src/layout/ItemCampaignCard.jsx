@@ -42,10 +42,19 @@ export default function ItemCampaignCard({
   }, [idCampanhaDeItens, token]);
 
   // Calcula o percentual dos itens
-  const percentualEntregue = quantidadeDeItens > 0 ? ((quantidadeDeItensEntregues / quantidadeDeItens) * 100).toFixed(2) : 0;
-  const percentualAcamino = quantidadeDeItens > 0 ? (((itensACaminho / quantidadeDeItensEntregues)) * 100).toFixed(2) : 0;
+
+  const percentualEntregue = quantidadeDeItens > 0 
+  ? ((quantidadeDeItensEntregues / quantidadeDeItens) * 100).toFixed(2) 
+  : 0;
+
+  const percentualACamino = quantidadeDeItens > 0 
+  ? (((quantidadeDeItensEntregues + itensACaminho - quantidadeDeItensEntregues) / quantidadeDeItens) * 100).toFixed(2) 
+  : 0;
 
   const quantidadeDoada = quantidadeDeItensEntregues + itensACaminho;
+
+  const percentualTotalDeItens = quantidadeDeItens > 0 ? ((quantidadeDoada / quantidadeDeItens) * 100).toFixed(2) : 0;
+
 
   return (
     <div className="card shadow-sm m-2 p-3 d-flex flex-column justify-content-between" style={{ width: "18rem", minHeight: "580px", maxHeight: "350px" }}>
@@ -88,16 +97,16 @@ export default function ItemCampaignCard({
 
           {/* Barra de itens a caminho */}
           <div
-            className="progress-bar bg-primary progress-bar-striped"
+            className="progress-bar bg-warning progress-bar-striped"
             role="progressbar"
-            style={{ width: `${percentualAcamino}%` }}
-            aria-valuenow={percentualAcamino}
+            style={{ width: `${percentualACamino}%` }}
+            aria-valuenow={percentualACamino}
             aria-valuemin="0"
             aria-valuemax="100"
           />
         </div>
 
-        <p className="mb-1" style={{ fontSize: "0.9rem",  marginTop: "7%" }}>{percentualEntregue}% de itens entregues</p>
+        <p className="mb-1" style={{ fontSize: "0.9rem",  marginTop: "7%" }}>{percentualTotalDeItens}% de itens enviados</p>
         <p className="mb-1" style={{ fontSize: "0.9rem" }}>Total de itens doados: {quantidadeDoada}</p>
         <p className="mb-1" style={{ fontSize: "0.9rem" }}>Itens entregues: {quantidadeDeItensEntregues} / {quantidadeDeItens}</p>
         <p className="mb-1" style={{ fontSize: "0.9rem" }}>Itens a caminho: {itensACaminho}</p>

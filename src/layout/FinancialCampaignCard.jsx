@@ -101,7 +101,7 @@ export default function FinancialCampaignCard({
         {/* Barra de progresso */}
         <div className="progress mb-2" style={{ height: "8px" }}>
           <div 
-            className="progress-bar bg-success" 
+            className="progress-bar bg-success progress-bar-striped" 
             role="progressbar" 
             style={{ width: `${percentual}%` }}
             aria-valuenow={percentual}
