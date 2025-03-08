@@ -118,7 +118,7 @@ export default function Navbar() {
                 className="nav-link btn btn-light text-light px-3"
                 to="/login"
               >
-                <i className="fa-solid fa-circle-user"></i> Login
+                <i className="fa-solid fa-circle-user" style={{marginRight: "5px"}}></i> Login
               </Link>
             )}
           </li>
