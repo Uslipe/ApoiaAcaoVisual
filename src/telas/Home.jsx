@@ -113,6 +113,7 @@ export default function Home() {
                   diasRestantes={calcularDiasRestantes(campanha.dataFim)}
                   onDoar={() => handleDoarItens(campanha)}
                   idCampanhaDeItens={campanha.idCampanhaDeItens}
+                  itensACaminho={campanha.itensACaminho}
                 />
               </div>
             ))}
