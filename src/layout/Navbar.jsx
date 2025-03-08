@@ -6,11 +6,13 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const token = localStorage.getItem("token");
+  const roles = JSON.parse(localStorage.getItem("roles")) || [];
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("idUsuario");
     localStorage.removeItem("id");
+    localStorage.removeItem("roles");
     navigate("/");
   };
 
@@ -72,22 +74,39 @@ export default function Navbar() {
                   </div>
                   <div className="dropdown-content">
                     <ul className="locations">
-                      <li>
-                        <a href="/perfil"> Gerenciar Perfil </a>
-                      </li>
-                      <li>
-                        <a href="/HistoricoDoacoesDoador">
-                          {" "}
-                          Ver históricos de doações{" "}
-                        </a>
-                      </li>
+                      {roles.includes("ROLE_ADMIN") ? (
+                        <>
+                          <li>
+                            <a href="/perfil"> Gerenciar Perfil </a>
+                          </li>
+                        </>
+                      ) : roles.includes("ROLE_ONG") ? (
+                        <>
+                          <li>
+                            <a href="/perfilOng"> Gerenciar Perfil </a>
+                          </li>
+                          <li>
+                            <a href="/AreaOng"> Área da ONG </a>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li>
+                            <a href="/perfil"> Gerenciar Perfil </a>
+                          </li>
+                          <li>
+                            <a href="/HistoricoDoacoesDoador">
+                              Ver históricos de doações
+                            </a>
+                          </li>
+                        </>
+                      )}
                       <li>
                         <button
                           onClick={handleLogout}
                           className="dropdown-logout"
                         >
-                          {" "}
-                          Sair da Conta{" "}
+                          Sair da Conta
                         </button>
                       </li>
                     </ul>
