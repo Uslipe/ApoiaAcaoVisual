@@ -24,3 +24,5 @@ yarn-error.log*
 
 # Ignore README.md
 README.md
+src/telas/GerenciarCampanhasOng.jsx
+src/telas/resources/gerenciarCampanhasOng.css
