@@ -27,6 +27,7 @@ import DoacaoItens from "./telas/DoacaoItens";
 import ValidarOngADM from "./telas/ValidarOngADM";
 import DeletarCampanhasADM from "./telas/DeletarCampanhasADM";
 import CriarCampanhaFinanceira from "./telas/CriarCampanhaFinanceira";
+import GerenciarCampanhasOng from "./telas/GerenciarCampanhasOng";
 import CriarCampanhaItens from "./telas/CriarCampanhaItens";
 
 function App() {
@@ -73,6 +74,10 @@ function App() {
           <Route
             path="/criarCampanhaFinanceira"
             element={<CriarCampanhaFinanceira />}
+          />
+          <Route
+            path="/gerenciarCampanhasOng"
+            element={<GerenciarCampanhasOng />}
           />
           <Route path="/criarCampanhaItens" element={<CriarCampanhaItens />} />
         </Routes>

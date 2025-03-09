@@ -7,6 +7,7 @@ export default function DeletarCampanhasADM() {
   const [campanhasDeItens, setCampanhasDeItens] = useState([]);
   const [campanhasFinanceiras, setCampanhasFinanceiras] = useState([]);
   const [ongs, setOngs] = useState([]);
+  const [ongsCarregadas, setOngsCarregadas] = useState(false); // Novo estado para controlar quando as ONGs foram carregadas
 
   useEffect(() => {
     const buscarOngs = async () => {
@@ -23,11 +24,19 @@ export default function DeletarCampanhasADM() {
           },
         });
 
+        console.log("ONGs carregadas:", response.data);
         setOngs(response.data);
+        setOngsCarregadas(true); // Marcar que as ONGs foram carregadas
       } catch (error) {
         console.error("Erro ao buscar ONGs:", error);
       }
     };
+
+    buscarOngs();
+  }, []);
+
+  useEffect(() => {
+    if (!ongsCarregadas) return; // Esperar até que as ONGs sejam carregadas
 
     const buscarCampanhasDeItens = async () => {
       const token = localStorage.getItem("token");
@@ -50,7 +59,8 @@ export default function DeletarCampanhasADM() {
 
         // Adicionar o nome da ONG a cada campanha
         const campanhasComNomeOng = campanhasOrdenadas.map(campanha => {
-          const ong = ongs.find(ong => ong.id === campanha.idOng);
+          const ong = ongs.find(ong => ong.id === campanha.idOng.id);
+          console.log("ONG encontrada para campanha de itens:", ong);
           return { ...campanha, nomeOng: ong ? ong.nome : "ONG não encontrada" };
         });
 
@@ -81,7 +91,8 @@ export default function DeletarCampanhasADM() {
 
         // Adicionar o nome da ONG a cada campanha
         const campanhasComNomeOng = campanhasOrdenadas.map(campanha => {
-          const ong = ongs.find(ong => ong.id === campanha.idOng);
+          const ong = ongs.find(ong => ong.id === campanha.idOng.id);
+          console.log("ONG encontrada para campanha financeira:", ong);
           return { ...campanha, nomeOng: ong ? ong.nome : "ONG não encontrada" };
         });
 
@@ -92,13 +103,12 @@ export default function DeletarCampanhasADM() {
     };
 
     const fetchData = async () => {
-      await buscarOngs();
       await buscarCampanhasDeItens();
       await buscarCampanhasFinanceiras();
     };
 
     fetchData();
-  }, []);
+  }, [ongsCarregadas]); // Executar o efeito quando as ONGs forem carregadas
 
   const deletarCampanha = async (id, tipo) => {
     const token = localStorage.getItem("token");
@@ -108,7 +118,14 @@ export default function DeletarCampanhasADM() {
     }
 
     try {
-      await axios.delete(`http://localhost:8080/deletarCampanha/${tipo}/${id}`, {
+      let url = "";
+      if (tipo === "itens") {
+        url = `http://localhost:8080/deletarCampanhaDeItens/${id}`;
+      } else if (tipo === "financeira") {
+        url = `http://localhost:8080/deletarCampanhaFinanceira/${id}`;
+      }
+
+      await axios.delete(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -130,7 +147,7 @@ export default function DeletarCampanhasADM() {
       <Navbar />
       <div className="container mt-4 campanhas-container">
         <h1>Lista de Campanhas</h1>
-        <div className="campanhas-lista">
+        <div className="campanhas-lista campanhas-de-itens">
           <h2>Campanhas de Itens</h2>
           <div className="campanha-item header">
             <span>ID</span>
@@ -158,7 +175,7 @@ export default function DeletarCampanhasADM() {
             <p>Nenhuma campanha de itens encontrada.</p>
           )}
         </div>
-        <div className="campanhas-lista">
+        <div className="campanhas-lista campanhas-financeiras">
           <h2>Campanhas Financeiras</h2>
           <div className="campanha-item header">
             <span>ID</span>

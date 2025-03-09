@@ -78,29 +78,31 @@ export default function Home() {
     <div>
       <Navbar />
 
-      <div className="container mt-4 home-container" style={{paddingBottom: "5%"}}>
-        <h2>Campanhas Financeiras</h2>
-        {campanhasFinanceiras.length > 0 ? (
-          <Slider {...settings}>
-            {campanhasFinanceiras.map((campanha) => (
-              <div key={campanha.idCampanhaFinanceira}>
-                <FinancialCampaignCard
-                  nome={campanha.nome}
-                  descricao={campanha.descricao}
-                  valorArrecadado={campanha.valorArrecadado}
-                  metaValor={campanha.metaValor}
-                  diasRestantes={calcularDiasRestantes(campanha.dataFim)}
-                  onDoar={() => handleDoar(campanha)}
-                  idCampanhaFinanceira={campanha.idCampanhaFinanceira}
-                />
-              </div>
-            ))}
-          </Slider>
-        ) : (
-          <p>Nenhuma campanha disponível.</p>
-        )}
+      <div className="container mt-4 home-container">
+        <div className="camp">
+          <h2>Campanhas Financeiras</h2>
+          {campanhasFinanceiras.length > 0 ? (
+            <Slider {...settings}>
+              {campanhasFinanceiras.map((campanha) => (
+                <div key={campanha.idCampanhaFinanceira}>
+                  <FinancialCampaignCard
+                    nome={campanha.nome}
+                    descricao={campanha.descricao}
+                    valorArrecadado={campanha.valorArrecadado}
+                    metaValor={campanha.metaValor}
+                    diasRestantes={calcularDiasRestantes(campanha.dataFim)}
+                    onDoar={() => handleDoar(campanha)}
+                    idCampanhaFinanceira={campanha.idCampanhaFinanceira}
+                  />
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <p>Nenhuma campanha disponível.</p>
+          )}
+        </div>
 
-        <h2 className="mt-4" style={{paddingTop: "5%"}}>Campanhas de Itens</h2>
+        <h2 className="mt-4">Campanhas de Itens</h2>
         {campanhasItens.length > 0 ? (
           <Slider {...settings}>
             {campanhasItens.map((campanha) => (

@@ -1,3 +1,30 @@
 .home-container {
-    padding-top: 70px; /* Ajuste o valor conforme necessário para a altura da NavBar */
-  }
+  padding-top: 70px;
+
+  /* Ajuste o valor conforme necessário para a altura da NavBar */
+}
+
+.camp {
+  padding: 50px;
+
+}
+
+
+
+.slick-prev:before,
+.slick-next:before {
+  color: rgb(24, 31, 51);
+  /* Cor das setas */
+  font-size: 30px;
+  /* Tamanho das setas */
+}
+
+.slick-prev {
+  left: -35px;
+  /* Ajuste conforme necessário */
+}
+
+.slick-next {
+  right: -25px;
+  /* Ajuste conforme necessário */
+}

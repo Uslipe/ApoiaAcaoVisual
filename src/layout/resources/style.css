@@ -49,12 +49,15 @@
 }
 
 .menu li a {
-    color: #318fa6;
+    color: #000304;
     text-decoration: none;
     font-size: 16px;
     display: block;
     align-items: center;
+}
 
+.menu a:hover {
+    color: #1183b4;
 }
 
 .about {
@@ -72,20 +75,28 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+
 }
 
 /* Garante que o dropdown fique abaixo do botão corretamente */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: #2c3e50;
     min-width: 220px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 10;
     top: 100%;
     left: 0;
     border-radius: 5px;
     overflow: hidden;
+
+
+}
+
+.btt {
+    left: 0px;
+    top: 100%;
 }
 
 /* Remove espaçamento indesejado e mantém uma estrutura limpa */
@@ -150,6 +161,15 @@
     left: auto;
     height: 56px;
     top: -8px;
+
+}
+
+
+/* ______________________________ */
+
+.Loginbtn:hover {
+    background-color: #34495e;
+
 }
 
 .Loginbtn li {
@@ -161,96 +181,25 @@
 
 }
 
-.icon-login a {
-    background-color: #3498db;
-    color: #ecf0f1;
-    padding: 8px 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    font-size: 16px;
 
-}
-
-.icon-login a:hover {
-    background-color: #2980b9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.icon-login img {
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    margin-right: 15px;
-    border: 1px solid #ecf0f1;
-    position: relative;
-}
-
-.submenu {
+.Loginbtn .icon-login::after {
+    content: '';
     position: absolute;
-    background-color: #34495e;
+    bottom: 0;
     left: 0;
-    top: 100%;
-    list-style: none;
-    min-width: 200px;
-    display: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 0 0 5px 5px;
-
+    width: 0;
+    height: 3px;
+    background: #3498db;
+    transition: width 0.3s ease;
 }
 
-.submenu .submenu {
-    top: 50px;
-    left: 100%;
-    border-radius: 5px;
+.Loginbtn .icon-login:hover::after {
+    width: 100%;
 }
 
-.menu li:hover>.submenu {
-    display: block;
-    animation: fadeIn 0.3s ease;
-}
+/* fim botao login */
 
-.submenu li {
-    padding: 12px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-}
-
-
-.submenu li:last-child {
-    border-bottom: none;
-}
-
-.menu li:hover {
-    background-color: #3b4f63;
-}
-
-.menu li:hover>a {
-    color: #3498db;
-}
-
-.submenu li:hover>a {
-    color: #2ecc71;
-}
-
-.submenu .submenu li:hover>a {
-    color: #dde323;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* animação azul */
 
 .menu li::after {
     content: '';
@@ -267,11 +216,9 @@
     width: 100%;
 }
 
-.submenu li::before {
-    content: '>>';
-    color: rgba(255, 255, 255, 0.3);
-    margin-right: 10px;
-}
+/* fim animaçao azul */
+
+
 
 
 /* FOOTER  */
@@ -444,18 +391,24 @@ img {
 
 /* menu drop */
 .icon-login {
-    position: relative;
-    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 150px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+
+
 
 .btPerfil {
     display: flex;
-    /* background-color: #2980b9; */
     width: 80px;
     height: 56px;
     border-radius: 5px;
@@ -465,9 +418,7 @@ img {
 }
 
 .btPerfil:hover {
-    background-color: transparent 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: solid #2980b9;
+    color: #1183b4;
 }
 
 .btPerfil::after {
@@ -481,40 +432,67 @@ img {
     transition: width 0.3s ease;
 }
 
+.btPerfil {
+    width: 150px;
+    background-color: #2c3e50;
+}
 
-.dropdown-content {
-    display: none;
+/* rever isso pra clicar na div inteira */
+.dropdown-content li a {
+    background-color: #2c3e50;
+    height: 56px;
+
+}
+
+.dropdown-logout {
+    display: flex;
+    width: 140px;
+    align-items: center;
+    color: #ffffff;
+}
+
+
+
+.dropdown-content .locations li {
+    width: 100%;
+    /* Garante que cada item da lista ocupe toda a largura */
+    background-color: #2c3e50;
+    /* Cor de fundo dos itens da lista */
+    display: flex;
+    /* Garante que os itens da lista ocupem toda a largura */
+    align-items: center;
+    /* Centraliza verticalmente */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+}
+
+.locations li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+button {
+    background-color: #dc3545;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ff0019;
+}
+
+
+.locations .te::after {
+    content: '';
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 2000;
-    /* Certifique-se de que o z-index é alto o suficiente */
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #3498db;
+    transition: width 0.3s ease;
 }
 
-.dropdown-content ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.locations .te:hover::after {
+    width: 100%;
 }
-
-.dropdown-content ul li {
-    padding: 8px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content ul li a {
-    color: black;
-    text-decoration: none;
-}
-
-.dropdown-content ul li a:hover {
-    background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* fim dropdown */

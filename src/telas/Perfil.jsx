@@ -168,6 +168,16 @@ export default function Perfil() {
     });
   };
 
+  const handleHistoricoDoacoesDoador = () => {
+    navigate("/historicoDoacoesDoador");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("idUsuario");
+    navigate("/");
+  };
+
   return (
     <div>
       <Navbar />
@@ -230,6 +240,24 @@ export default function Perfil() {
               </span>
               <div className="flex-grow-1 border-bottom"></div>
             </div>
+
+        <div className="zona-de-perigo mt-1">
+          <h4 className="text-danger">Zona de perigo!</h4>
+          <p className="text-muted">A ação abaixo não pode ser desfeita.</p>
+          <input
+            type="password"
+            className="form-control mt-2"
+            placeholder="Digite sua senha para confirmar"
+            value={confirmarSenha}
+            onChange={(e) => setConfirmarSenha(e.target.value)}
+          />
+          <button
+            className="btn btn-danger mt-3"
+            onClick={confirmDeleteAccount}
+          >
+            Excluir Conta
+          </button>
+        </div>
 
             <div className="zona-de-perigo mt-1">
               <h4 className="text-danger">Zona de perigo!</h4>

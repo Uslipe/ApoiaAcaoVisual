@@ -42,7 +42,8 @@
   padding: 10px;
 }
 
-.campanha-item.header span {
+.campanha-item.header span,
+.campanha-item span {
   flex: 1;
   text-align: center;
   display: flex;
@@ -57,9 +58,7 @@
   text-align: center;
   display: flex;
   align-items: center;
-  /* Alinha verticalmente dentro do span */
   justify-content: center;
-  /* Alinha horizontalmente dentro do span */
 }
 
 .campanha-item button {
@@ -68,8 +67,8 @@
   width: 100px;
   /* Definido uma largura fixa */
   padding: 5px 10px;
-  background-color: #ff4d4d;
-  /* Red */
+  background-color: #4CAF50;
+  /* Green */
   color: white;
   border: none;
   border-radius: 5px;
@@ -78,5 +77,5 @@
 }
 
 .campanha-item button:hover {
-  background-color: #ff1a1a;
+  background-color: #45a049;
 }
