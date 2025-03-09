@@ -78,26 +78,28 @@ export default function Home() {
       <Navbar />
 
       <div className="container mt-4 home-container">
-        <h2>Campanhas Financeiras</h2>
-        {campanhasFinanceiras.length > 0 ? (
-          <Slider {...settings}>
-            {campanhasFinanceiras.map((campanha) => (
-              <div key={campanha.idCampanhaFinanceira}>
-                <FinancialCampaignCard
-                  nome={campanha.nome}
-                  descricao={campanha.descricao}
-                  valorArrecadado={campanha.valorArrecadado}
-                  metaValor={campanha.metaValor}
-                  diasRestantes={calcularDiasRestantes(campanha.dataFim)}
-                  onDoar={() => handleDoar(campanha)}
-                  idCampanhaFinanceira={campanha.idCampanhaFinanceira}
-                />
-              </div>
-            ))}
-          </Slider>
-        ) : (
-          <p>Nenhuma campanha disponível.</p>
-        )}
+        <div className="camp">
+          <h2>Campanhas Financeiras</h2>
+          {campanhasFinanceiras.length > 0 ? (
+            <Slider {...settings}>
+              {campanhasFinanceiras.map((campanha) => (
+                <div key={campanha.idCampanhaFinanceira}>
+                  <FinancialCampaignCard
+                    nome={campanha.nome}
+                    descricao={campanha.descricao}
+                    valorArrecadado={campanha.valorArrecadado}
+                    metaValor={campanha.metaValor}
+                    diasRestantes={calcularDiasRestantes(campanha.dataFim)}
+                    onDoar={() => handleDoar(campanha)}
+                    idCampanhaFinanceira={campanha.idCampanhaFinanceira}
+                  />
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <p>Nenhuma campanha disponível.</p>
+          )}
+        </div>
 
         <h2 className="mt-4">Campanhas de Itens</h2>
         {campanhasItens.length > 0 &&

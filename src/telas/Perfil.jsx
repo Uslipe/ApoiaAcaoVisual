@@ -171,6 +171,12 @@ export default function Perfil() {
     navigate("/historicoDoacoesDoador");
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("idUsuario");
+    navigate("/");
+  };
+
   return (
     <div>
       <Navbar />
@@ -249,18 +255,7 @@ export default function Perfil() {
             Excluir Conta
           </button>
         </div>
-        <h2>Gerenciamento de Perfil</h2>
-        <div className="gerenciar-perfil">
-          <button
-            className="btng  btn btn-primary mt-4"
-            onClick={handleHistoricoDoacoesDoador}
-          >
-            Ver Histórico de Doações
-          </button>
-          <button className="btng  btn btn-danger mt-4" onClick={handleLogout}>
-            Sair
-          </button>
-        </div>
+
       </div>
     </div>
   );

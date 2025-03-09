@@ -34,9 +34,21 @@ export default function Navbar() {
           <li className="icon-login">
             {token ? (
               location.pathname === "/perfil" ? (
-                <button className="nav-link btn-sair-da-conta" onClick={handleLogout}>
-                  <i className="fa-solid fa-circle-xmark"></i> Sair da Conta
-                </button>
+                <div className="dropdown">
+                  <div className="btPerfil">
+                    <span className="">
+                      <i className="fa-solid fa-user fa-2x"></i>
+                      {/* Perfil */}
+                    </span>
+                  </div>
+                  <div className="dropdown-content">
+                    <ul className="locations">
+                      <li><Link to="/perfil"> Gerenciar Perfil </Link></li>
+                      <li><Link to="/HistoricoDoacoesDoador"> Ver históricos de doações </Link></li>
+                      <li className="logoutbt"><button onClick={handleLogout} className="dropdown-logout"> Sair da Conta </button></li>
+                    </ul>
+                  </div>
+                </div>
               ) : (
                 // DROPBAR
                 <div className="dropdown">
@@ -48,8 +60,8 @@ export default function Navbar() {
                   </div>
                   <div className="dropdown-content">
                     <ul className="locations">
-                      <li><a href="/perfil"> Gerenciar Perfil </a></li>
-                      <li><a href="/HistoricoDoacoesDoador"> Ver históricos de doações </a></li>
+                      <li><Link to="/perfil"> Gerenciar Perfil </Link></li>
+                      <li><Link to="/HistoricoDoacoesDoador"> Ver históricos de doações </Link></li>
                       <li className="logoutbt"><button onClick={handleLogout} className="dropdown-logout"> Sair da Conta </button></li>
                     </ul>
                   </div>
