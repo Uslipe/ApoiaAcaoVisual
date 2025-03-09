@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -15,6 +15,30 @@ export default function DoacaoFinanceira() {
   const [digitosCartao, setDigitosCartao] = useState("");
   const [dataDeValidade, setDataDeValidade] = useState("");
   const [cvv, setCvv] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .get("http://localhost:8080/ultimoCartaoDeCredito", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          if (response.data) {
+            const { nomeTitular, digitosCartao, dataDeValidade } =
+              response.data;
+            setNomeTitular(nomeTitular);
+            setDigitosCartao(digitosCartao);
+            setDataDeValidade(dataDeValidade.slice(0, 7)); // Apenas ano-mês
+          }
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar o último cartão de crédito:", error);
+        });
+    }
+  }, []);
 
   const handleDoacao = async () => {
     const token = localStorage.getItem("token");
@@ -107,10 +131,24 @@ export default function DoacaoFinanceira() {
         });
         setValorDoacao("");
         setMetodoPagamento("CARTAO");
-        setNomeTitular("");
-        setDigitosCartao("");
-        setDataDeValidade("");
-        setCvv("");
+
+        axios
+          .get("http://localhost:8080/ultimoCartaoDeCredito", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((response) => {
+            const { nomeTitular, digitosCartao, dataDeValidade } =
+              response.data;
+            setNomeTitular(nomeTitular);
+            setDigitosCartao(digitosCartao);
+            setDataDeValidade(dataDeValidade.slice(0, 7));
+            setCvv(""); // Limpar o campo CVV
+          })
+          .catch((error) => {
+            console.error("Erro ao buscar o último cartão de crédito:", error);
+          });
       }
     } catch (error) {
       console.error("Erro ao realizar doação:", error);
@@ -212,7 +250,6 @@ export default function DoacaoFinanceira() {
                 className="form-control"
                 id="cvv"
                 value={cvv}
-                onChange={(e) => setCvv(e.target.value)}
                 onChange={handleCvvChange}
                 required
               />
