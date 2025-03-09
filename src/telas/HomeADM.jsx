@@ -18,13 +18,13 @@ export default function HomeADM() {
         <h3>Funcionalidades</h3>
         <div className="button-group">
           <button
-            onClick={() => handleNavigation("/validar-ongs")}
+            onClick={() => handleNavigation("/validarOngADM")}
             className="btn btn-primary"
           >
             Validar ONGs
           </button>
           <button
-            onClick={() => handleNavigation("/deletar-campanhas")}
+            onClick={() => handleNavigation("/deletarCampanhasADM")}
             className="btn btn-primary"
           >
             Deletar Campanhas

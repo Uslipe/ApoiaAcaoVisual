@@ -8,6 +8,7 @@ import Login from "./telas/Login";
 import Cadastro from "./telas/Cadastro";
 import DoacaoFinanceira from "./telas/DoacaoFinanceira";
 import Perfil from "./telas/Perfil";
+import PerfilOng from "./telas/PerfilOng";
 import LoginOng from "./telas/LoginOng";
 import CadastroOng from "./telas/CadastroOng";
 import NavBarTrans from "./layout/NavBarTrans";
@@ -24,6 +25,10 @@ import ListarOngsADM from "./telas/ListarOngsADM";
 import ListarUsuariosADM from "./telas/ListarUsuariosADM";
 import DoacaoItens from "./telas/DoacaoItens";
 import ValidarOngADM from "./telas/ValidarOngADM";
+import DeletarCampanhasADM from "./telas/DeletarCampanhasADM";
+import CriarCampanhaFinanceira from "./telas/CriarCampanhaFinanceira";
+import GerenciarCampanhasOng from "./telas/GerenciarCampanhasOng";
+import CriarCampanhaItens from "./telas/CriarCampanhaItens";
 
 function App() {
   useEffect(() => {
@@ -46,6 +51,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/doacaoFinanceira" element={<DoacaoFinanceira />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/perfilOng" element={<PerfilOng />} />
           <Route path="/loginong" element={<LoginOng />} />
           <Route path="/CadastroOng" element={<CadastroOng />} />
           <Route path="/NavBarTrans" element={<NavBarTrans />} />
@@ -61,11 +67,23 @@ function App() {
           <Route path="/listarUsuariosADM" element={<ListarUsuariosADM />} />
           <Route path="/doacaoItens" element={<DoacaoItens />} />
           <Route path="/validarOngADM" element={<ValidarOngADM />} />
+          <Route
+            path="/deletarCampanhasADM"
+            element={<DeletarCampanhasADM />}
+          />
+          <Route
+            path="/criarCampanhaFinanceira"
+            element={<CriarCampanhaFinanceira />}
+          />
+          <Route
+            path="/gerenciarCampanhasOng"
+            element={<GerenciarCampanhasOng />}
+          />
+          <Route path="/criarCampanhaItens" element={<CriarCampanhaItens />} />
         </Routes>
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
-          <header className="App-header">
-          </header>
+          <header className="App-header"></header>
           {/* <header className="App-header"></header> */}
         </div>
       </div>

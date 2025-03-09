@@ -13,6 +13,7 @@ export default function Login() {
   const location = useLocation();
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     const handlePopState = (event) => {
       if (location.pathname === "/login") {
         navigate("/");
@@ -36,9 +37,19 @@ export default function Login() {
       });
 
       if (response.status === 200) {
-        const { token, idUsuario } = response.data; // O token e o id do usuário vem na resposta
+        const { token, id } = response.data; // O token e o id do usuário vem na resposta
         localStorage.setItem("token", token); // Armazena no localStorage
-        localStorage.setItem("idUsuario", idUsuario); // Armazena o ID do usuário
+        localStorage.setItem("idUsuario", id); // Armazena o ID do usuário
+
+        // Chamar o endpoint de roles
+        const rolesResponse = await axios.get("http://localhost:8080/roles", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const roles = rolesResponse.data;
+        localStorage.setItem("roles", JSON.stringify(roles));
 
         // Exibe uma notificação de sucesso
         toast.success("Login realizado com sucesso!", {
@@ -52,7 +63,12 @@ export default function Login() {
         });
 
         setTimeout(() => {
-          navigate("/"); // Redireciona após exibir a notificação
+          const roles = JSON.parse(localStorage.getItem("roles"));
+          if (roles.includes("ROLE_ADMIN")) {
+            navigate("/homeADM"); // Redireciona para a HomeADM
+          } else if (roles.includes("ROLE_DOADOR")) {
+            navigate("/"); // Redireciona para a Home
+          }
         }, 1000);
       }
     } catch (error) {
@@ -72,14 +88,13 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="main">
-
         <div className="login">
           {/* <img src={logo} alt="Logo" width="180" heigh="180" className="login-logo" /> */}
           <img
             src={logo}
             alt="Logo"
             width="180"
-            heigh="180"
+            height="180"
             className="login-logo"
           />
           <form onSubmit={handleLogin}>
@@ -107,8 +122,6 @@ export default function Login() {
               Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link>
             </p>
           </form>
-
-
         </div>
       </div>
     </div>

@@ -1,0 +1,82 @@
+.campanhas-container {
+  padding: 100px;
+  /* Ajuste conforme necessário */
+}
+
+.campanhas-container h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.campanhas-de-itens {
+  margin-bottom: 20px;
+  /* Ajuste conforme necessário */
+}
+
+.campanhas-financeiras {
+  margin-top: 20px;
+  /* Ajuste conforme necessário */
+}
+
+.campanhas-lista {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.campanha-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Alinha verticalmente */
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.campanha-item.header {
+  font-weight: bold;
+  background-color: #f1f1f1;
+  border-bottom: 2px solid #ccc;
+  margin: -10px -10px 10px -10px;
+  padding: 10px;
+}
+
+.campanha-item.header span {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  /* Alinha verticalmente dentro do span */
+  justify-content: center;
+  /* Alinha horizontalmente dentro do span */
+}
+
+.campanha-item span {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  /* Alinha verticalmente dentro do span */
+  justify-content: center;
+  /* Alinha horizontalmente dentro do span */
+}
+
+.campanha-item button {
+  flex: 0;
+  /* Removido o flex */
+  width: 100px;
+  /* Definido uma largura fixa */
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  /* Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.campanha-item button:hover {
+  background-color: #ff1a1a;
+}

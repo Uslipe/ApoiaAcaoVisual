@@ -23,6 +23,13 @@ export default function ValidarOngADM() {
 
         console.log("Resposta da API:", response.data);
 
+        // Verificar se o atributo 'validada' está presente
+        response.data.forEach(ong => {
+          if (ong.validada === undefined) {
+            console.warn(`Atributo 'validada' não encontrado para a ONG com ID: ${ong.id}`);
+          }
+        });
+
         // Filtrar as ONGs que não estão validadas
         const ongsNaoValidadas = response.data.filter(ong => !ong.validada);
 
@@ -38,17 +45,17 @@ export default function ValidarOngADM() {
     buscarOngs();
   }, []);
 
-  const validarOng = async (cnpj) => {
+  const validarOng = async (id) => {
     const token = localStorage.getItem("token");
     if (!token) {
       console.error("Token não encontrado");
       return;
     }
 
-    console.log("CNPJ usado para validar:", cnpj);
+    console.log("ID usado para validar:", id);
 
     try {
-      const response = await axios.put(`http://localhost:8080/validarONG/${cnpj}`, {}, {
+      const response = await axios.put(`http://localhost:8080/validarONG/${id}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -56,7 +63,7 @@ export default function ValidarOngADM() {
 
       if (response.status === 200) {
         // Atualizar a lista de ONGs após a validação
-        setOngs(ongs.filter(o => o.cnpj !== cnpj));
+        setOngs(ongs.filter(o => o.id !== id));
       } else {
         console.error("Erro ao validar ONG:", response.status);
       }
@@ -88,7 +95,7 @@ export default function ValidarOngADM() {
                   <span>{cnpj}</span>
                   <span>{endereco}</span>
                   <span>
-                    <button onClick={() => validarOng(cnpj)}>Validar</button>
+                    <button onClick={() => validarOng(id)}>Validar</button>
                   </span> 
                 </div>
               );

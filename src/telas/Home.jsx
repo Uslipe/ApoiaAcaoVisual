@@ -5,6 +5,7 @@ import Slider from "react-slick"; // Importa o carrossel
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/footer";
 import FinancialCampaignCard from "../layout/FinancialCampaignCard";
+import ItemCampaignCard from "../layout/ItemCampaignCard"; // Importa o novo componente
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./resources/home.css";
@@ -19,14 +20,14 @@ export default function Home() {
       .get("http://localhost:8080/listarCampanhasFinanceiras")
       .then((response) => setCampanhasFinanceiras(response.data))
       .catch((error) =>
-        console.error("Erro ao buscar campanhas financeiras:", error),
+        console.error("Erro ao buscar campanhas financeiras:", error)
       );
 
     axios
       .get("http://localhost:8080/listarCampanhasDeItens")
       .then((response) => setCampanhasItens(response.data))
       .catch((error) =>
-        console.error("Erro ao buscar campanhas de itens:", error),
+        console.error("Erro ao buscar campanhas de itens:", error)
       );
   }, []);
 
@@ -53,7 +54,7 @@ export default function Home() {
     slidesToShow: 3, // Exibe 3 campanhas por vez
     slidesToScroll: 1,
     arrows: true, // Habilita as setas de navegação
-    autoplay: true, // Habilita o autoplay
+    autoplay: false, // Habilita o autoplay
     autoplaySpeed: 2000, // Define a velocidade do autoplay (2 segundos)
     responsive: [
       {
@@ -77,6 +78,7 @@ export default function Home() {
     <div>
       <Navbar />
 
+<<<<<<< HEAD
       <div className="container mt-4 home-container">
         <div className="camp">
           <h2>Campanhas Financeiras</h2>
@@ -128,10 +130,53 @@ export default function Home() {
                 >
                   <i class="fa-solid fa-hand-holding-heart"></i> Doar
                 </button>
+=======
+      <div className="container mt-4 home-container" style={{paddingBottom: "5%"}}>
+        <h2>Campanhas Financeiras</h2>
+        {campanhasFinanceiras.length > 0 ? (
+          <Slider {...settings}>
+            {campanhasFinanceiras.map((campanha) => (
+              <div key={campanha.idCampanhaFinanceira}>
+                <FinancialCampaignCard
+                  nome={campanha.nome}
+                  descricao={campanha.descricao}
+                  valorArrecadado={campanha.valorArrecadado}
+                  metaValor={campanha.metaValor}
+                  diasRestantes={calcularDiasRestantes(campanha.dataFim)}
+                  onDoar={() => handleDoar(campanha)}
+                  idCampanhaFinanceira={campanha.idCampanhaFinanceira}
+                />
               </div>
-            </div>
-          ))}
+            ))}
+          </Slider>
+        ) : (
+          <p>Nenhuma campanha disponível.</p>
+        )}
+
+        <h2 className="mt-4" style={{paddingTop: "5%"}}>Campanhas de Itens</h2>
+        {campanhasItens.length > 0 ? (
+          <Slider {...settings}>
+            {campanhasItens.map((campanha) => (
+              <div key={campanha.idCampanhaDeItens}>
+                <ItemCampaignCard
+                  nome={campanha.nome}
+                  descricao={campanha.descricao}
+                  quantidadeDeItens={campanha.quantidadeDeItens}
+                  quantidadeDeItensEntregues={campanha.quantidadeDeItensEntregues}
+                  diasRestantes={calcularDiasRestantes(campanha.dataFim)}
+                  onDoar={() => handleDoarItens(campanha)}
+                  idCampanhaDeItens={campanha.idCampanhaDeItens}
+                  itensACaminho={campanha.itensACaminho}
+                />
+>>>>>>> ed6d404dcaa055b8b8d7e3811333a28ab5f8740b
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <p>Nenhuma campanha de itens disponível.</p>
+        )}
       </div>
+
       <Footer />
     </div>
   );

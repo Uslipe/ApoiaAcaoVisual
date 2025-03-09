@@ -5,37 +5,6 @@
     font-family: 'segioe ui', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-/* .navbar-wrapper{
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    height: 56px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    background-color:#2c3e50;
-
-} */
-
-/* .navbar{
-    display: flex;
-    position: relative;
-    background-color:#2c3e50;
-    padding: 0px;
-    border-radius: 5px;
-    top: 0;
-    left: 0;
-    width: 1200px;
-    z-index: 1;
-    height: 56px;
-    overflow: hidden;
-
-} */
-
-
 .navbar-wrapper {
     display: flex;
     position: fixed;
@@ -96,7 +65,80 @@
     background-color: #2ecc71;
 }
 
+/* Centraliza o rótulo "Criar Campanha" na navbar */
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 
+/* Garante que o dropdown fique abaixo do botão corretamente */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Remove espaçamento indesejado e mantém uma estrutura limpa */
+.dropdown-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ajusta os itens do dropdown para não ficarem sobrepostos */
+.dropdown-content li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.dropdown-content li:last-child {
+    border-bottom: none;
+}
+
+/* Estiliza os links do dropdown */
+.dropdown-content a {
+    color: #2c3e50;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+/* Adiciona efeito hover */
+.dropdown-content a:hover {
+    background-color: transparent !important;
+    color: #318fa6 !important;
+}
+
+/* Exibe o dropdown ao passar o mouse */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Ajusta o botão para ficar mais alinhado */
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #2c3e50;
+    color: #f1f1f1;
+    height: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    text-align: center;
+}
 
 /* login */
 
@@ -118,11 +160,6 @@
     padding: 0 20px;
 
 }
-
-
-
-
-
 
 .icon-login a {
     background-color: #3498db;
