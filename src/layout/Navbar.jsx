@@ -38,9 +38,9 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/CadastroOng">
+            <a className="contact" onClick={scrollToFooter}>
               <i className="fa-solid fa-phone"></i> Contato
-            </Link>
+            </a>
           </li>
           <li>
             <a className="about" onClick={scrollToFooter}>
@@ -142,7 +142,11 @@ export default function Navbar() {
                 className="nav-link btn btn-light text-light px-3"
                 to="/login"
               >
-                <i className="fa-solid fa-circle-user" style={{marginRight: "5px"}}></i> Login
+                <i
+                  className="fa-solid fa-circle-user"
+                  style={{ marginRight: "5px" }}
+                ></i>{" "}
+                Login
               </Link>
             )}
           </li>
