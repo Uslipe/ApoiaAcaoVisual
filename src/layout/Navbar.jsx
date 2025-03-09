@@ -54,9 +54,9 @@ export default function Navbar() {
           </li>
           {roles.includes("ROLE_ONG") && (
             <li className="dropdown">
-              <span className="dropdown-toggle">
+              <button className="dropdown-toggle">
                 <i className="fa-solid fa-plus"></i> Criar Campanha
-              </span>
+              </button>
               <div className="dropdown-content">
                 <ul>
                   <li>
@@ -77,8 +77,12 @@ export default function Navbar() {
         <ul className="Loginbtn">
           <li className="icon-login">
             {token ? (
-              location.pathname === "/perfil" || location.pathname === "/perfilOng" ? (
-                <button className="nav-link btn-sair-da-conta" onClick={handleLogout}>
+              location.pathname === "/perfil" ||
+              location.pathname === "/perfilOng" ? (
+                <button
+                  className="nav-link btn-sair-da-conta"
+                  onClick={handleLogout}
+                >
                   <i className="fa-solid fa-circle-xmark"></i> Sair da Conta
                 </button>
               ) : (
@@ -89,11 +93,46 @@ export default function Navbar() {
                       {/* Perfil */}
                     </span>
                   </div>
-                  <div className="dropdown-content btt">
-                    <ul className="">
-                      <li><Link className="te" to="/perfil"> Gerenciar Perfil </Link></li>
-                      <li><Link className="te" to="/HistoricoDoacoesDoador"> Ver históricos de doações </Link></li>
-                      <li className="logoutbt"><button onClick={handleLogout} className="dropdown-logout"> Sair da Conta </button></li>
+                  <div className="dropdown-content">
+                    <ul className="locations">
+                      {roles.includes("ROLE_ADMIN") ? (
+                        <>
+                          <li>
+                            <a href="/perfil"> Gerenciar Perfil </a>
+                          </li>
+                        </>
+                      ) : roles.includes("ROLE_ONG") ? (
+                        <>
+                          <li>
+                            <a href="/perfilOng"> Gerenciar Perfil </a>
+                          </li>
+                          <li>
+                            <a href="/gerenciarCampanhas">
+                              {" "}
+                              Gerenciar Campanhas{" "}
+                            </a>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li>
+                            <a href="/perfil"> Gerenciar Perfil </a>
+                          </li>
+                          <li>
+                            <a href="/HistoricoDoacoesDoador">
+                              Ver históricos de doações
+                            </a>
+                          </li>
+                        </>
+                      )}
+                      <li>
+                        <button
+                          onClick={handleLogout}
+                          className="dropdown-logout"
+                        >
+                          Sair da Conta
+                        </button>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -103,13 +142,12 @@ export default function Navbar() {
                 className="nav-link btn btn-light text-light px-3"
                 to="/login"
               >
-                <i className="fa-solid fa-circle-user" style={{ marginRight: "5px" }}></i> Login
+                <i className="fa-solid fa-circle-user" style={{marginRight: "5px"}}></i> Login
               </Link>
-            )
-            }
-          </li >
-        </ul >
-      </nav >
-    </div >
+            )}
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 }
