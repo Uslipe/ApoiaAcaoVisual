@@ -12,7 +12,7 @@ export default function HistoricoDoacoesDoador() {
       const idUsuario = localStorage.getItem("idUsuario");
       try {
         const response = await axios.get(
-          `http://localhost:8080/verHistoricoDoacoes/${idUsuario}`,
+          `https://plataformaong-production.up.railway.app/verHistoricoDoacoes/${idUsuario}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

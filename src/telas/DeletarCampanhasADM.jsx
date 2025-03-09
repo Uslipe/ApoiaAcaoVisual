@@ -18,7 +18,7 @@ export default function DeletarCampanhasADM() {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/listarONG", {
+        const response = await axios.get("https://plataformaong-production.up.railway.app/listarONG", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,7 +46,7 @@ export default function DeletarCampanhasADM() {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/listarCampanhasDeItens", {
+        const response = await axios.get("https://plataformaong-production.up.railway.app/listarCampanhasDeItens", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -78,7 +78,7 @@ export default function DeletarCampanhasADM() {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/listarCampanhasFinanceiras", {
+        const response = await axios.get("https://plataformaong-production.up.railway.app/listarCampanhasFinanceiras", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -120,9 +120,9 @@ export default function DeletarCampanhasADM() {
     try {
       let url = "";
       if (tipo === "itens") {
-        url = `http://localhost:8080/deletarCampanhaDeItens/${id}`;
+        url = `https://plataformaong-production.up.railway.app/deletarCampanhaDeItens/${id}`;
       } else if (tipo === "financeira") {
-        url = `http://localhost:8080/deletarCampanhaFinanceira/${id}`;
+        url = `https://plataformaong-production.up.railway.app/deletarCampanhaFinanceira/${id}`;
       }
 
       await axios.delete(url, {

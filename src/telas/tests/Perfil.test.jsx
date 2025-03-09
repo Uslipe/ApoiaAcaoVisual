@@ -68,7 +68,7 @@ describe("Componente do Perfil", () => {
     fireEvent.click(screen.getByText("Atualizar Perfil"));
 
     expect(axios.put).toHaveBeenCalledWith(
-      "http://localhost:8080/editarPerfil/mockId",
+      "https://plataformaong-production.up.railway.app/editarPerfil/mockId",
       {
         nome: "João Da Silva",
         email: "joaodasilva@exemplo.com",
@@ -131,7 +131,7 @@ describe("Componente do Perfil", () => {
 
     await waitFor(() => {
       expect(axios.delete).toHaveBeenCalledWith(
-        "http://localhost:8080/deletarUsuario/mockId",
+        "https://plataformaong-production.up.railway.app/deletarUsuario/mockId",
         { headers: { Authorization: "Bearer mockToken" } },
       );
     });

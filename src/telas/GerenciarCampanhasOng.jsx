@@ -27,7 +27,7 @@ export default function GerenciarCampanhasOng() {
 
     const fetchCampanhasDeItens = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/listarCampanhasDeItensPorONG/${id}`, {
+        const response = await axios.get(`https://plataformaong-production.up.railway.app/listarCampanhasDeItensPorONG/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ export default function GerenciarCampanhasOng() {
 
     const fetchCampanhasFinanceiras = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/listarCampanhasFinanceirasPorONG/${id}`, {
+        const response = await axios.get(`https://plataformaong-production.up.railway.app/listarCampanhasFinanceirasPorONG/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

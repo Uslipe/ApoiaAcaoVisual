@@ -15,7 +15,7 @@ export default function ListarUsuariosADM() {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/usuarios", {
+        const response = await axios.get("https://plataformaong-production.up.railway.app/usuarios", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

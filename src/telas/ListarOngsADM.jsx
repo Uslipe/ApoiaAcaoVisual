@@ -15,7 +15,7 @@ export default function ListarOngsADM() {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/listarONG", {
+        const response = await axios.get("https://plataformaong-production.up.railway.app/listarONG", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

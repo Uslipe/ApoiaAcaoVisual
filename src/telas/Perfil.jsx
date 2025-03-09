@@ -28,7 +28,7 @@ export default function Perfil() {
 
     // Buscar os dados do usuário
     axios
-      .get(`http://localhost:8080/buscarUsuario/${id}`, {
+      .get(`https://plataformaong-production.up.railway.app/buscarUsuario/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -64,7 +64,7 @@ export default function Perfil() {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/editarPerfil/${id}`,
+        `https://plataformaong-production.up.railway.app/editarPerfil/${id}`,
         {
           nome,
           email,
@@ -119,7 +119,7 @@ export default function Perfil() {
     }
 
     try {
-      await axios.delete(`http://localhost:8080/deletarUsuario/${id}`, {
+      await axios.delete(`https://plataformaong-production.up.railway.app/deletarUsuario/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

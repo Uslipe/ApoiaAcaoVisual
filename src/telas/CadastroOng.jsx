@@ -20,7 +20,7 @@ export default function Cadastro() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/salvarONG", {
+      const response = await axios.post("https://plataformaong-production.up.railway.app/salvarONG", {
         nome,
         endereco,
         contaBancaria,

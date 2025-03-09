@@ -53,7 +53,7 @@ export default function CriarCampanhaItens() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/salvarCampanhaDeItens",
+        "https://plataformaong-production.up.railway.app/salvarCampanhaDeItens",
         formData,
         {
           headers: {

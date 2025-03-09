@@ -25,7 +25,7 @@ export default function ItemCampaignCard({
     );
     axios
       .get(
-        `http://localhost:8080/imagem/campanhaDeItens/${idCampanhaDeItens}`,
+        `https://plataformaong-production.up.railway.app/imagem/campanhaDeItens/${idCampanhaDeItens}`,
         {
           responseType: "arraybuffer",
         },

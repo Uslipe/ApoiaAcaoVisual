@@ -26,7 +26,7 @@ export default function PerfilOng() {
 
     // Buscar os dados da ONG
     axios
-      .get(`http://localhost:8080/buscarONG/${id}`, {
+      .get(`https://plataformaong-production.up.railway.app/buscarONG/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,7 +63,7 @@ export default function PerfilOng() {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/atualizarONG/${id}`,
+        `https://plataformaong-production.up.railway.app/atualizarONG/${id}`,
         {
           nome,
           endereco,

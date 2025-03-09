@@ -17,14 +17,14 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/listarCampanhasFinanceiras")
+      .get("https://plataformaong-production.up.railway.app/listarCampanhasFinanceiras")
       .then((response) => setCampanhasFinanceiras(response.data))
       .catch((error) =>
         console.error("Erro ao buscar campanhas financeiras:", error)
       );
 
     axios
-      .get("http://localhost:8080/listarCampanhasDeItens")
+      .get("https://plataformaong-production.up.railway.app/listarCampanhasDeItens")
       .then((response) => setCampanhasItens(response.data))
       .catch((error) =>
         console.error("Erro ao buscar campanhas de itens:", error)

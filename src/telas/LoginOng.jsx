@@ -32,7 +32,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/loginOng", {
+      const response = await axios.post("https://plataformaong-production.up.railway.app/loginOng", {
         cnpj,
         senha,
       });
@@ -43,7 +43,7 @@ export default function Login() {
         localStorage.setItem("id", id); // Armazena o ID da ONG no localStorage
 
         // Chamar o endpoint de roles
-        const rolesResponse = await axios.get("http://localhost:8080/roles", {
+        const rolesResponse = await axios.get("https://plataformaong-production.up.railway.app/roles", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

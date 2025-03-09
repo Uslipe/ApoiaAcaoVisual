@@ -16,7 +16,7 @@ export default function Cadastro() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/salvarUsuario", {
+      const response = await axios.post("https://plataformaong-production.up.railway.app/salvarUsuario", {
         nome,
         email,
         senha,

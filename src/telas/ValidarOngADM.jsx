@@ -15,7 +15,7 @@ export default function ValidarOngADM() {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/listarONG", {
+        const response = await axios.get("https://plataformaong-production.up.railway.app/listarONG", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -55,7 +55,7 @@ export default function ValidarOngADM() {
     console.log("ID usado para validar:", id);
 
     try {
-      const response = await axios.put(`http://localhost:8080/validarONG/${id}`, {}, {
+      const response = await axios.put(`https://plataformaong-production.up.railway.app/validarONG/${id}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

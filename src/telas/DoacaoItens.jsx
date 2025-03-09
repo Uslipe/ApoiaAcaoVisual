@@ -49,7 +49,7 @@ export default function DoacaoItens() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/salvarDoacaoDeItens",
+        "https://plataformaong-production.up.railway.app/salvarDoacaoDeItens",
         {
           usuario: { id: idUsuario },
           campanhaDeItens: { idCampanhaDeItens: campanha.idCampanhaDeItens },

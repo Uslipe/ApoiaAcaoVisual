@@ -20,7 +20,7 @@ export default function DoacaoFinanceira() {
     const token = localStorage.getItem("token");
     if (token) {
       axios
-        .get("http://localhost:8080/ultimoCartaoDeCredito", {
+        .get("https://plataformaong-production.up.railway.app/ultimoCartaoDeCredito", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -83,7 +83,7 @@ export default function DoacaoFinanceira() {
         const dataDeValidadeCompleta = `${ano}-${mes}-25`; // Adiciona o dia 25
 
         const cartaoResponse = await axios.post(
-          "http://localhost:8080/cadastrarCartaoDeCredito",
+          "https://plataformaong-production.up.railway.app/cadastrarCartaoDeCredito",
           {
             nomeTitular,
             digitosCartao,
@@ -103,7 +103,7 @@ export default function DoacaoFinanceira() {
       }
 
       const doacaoResponse = await axios.post(
-        "http://localhost:8080/salvarDoacaoFinanceira",
+        "https://plataformaong-production.up.railway.app/salvarDoacaoFinanceira",
         {
           valor: valorDoacao,
           formaPagamento: metodoPagamento,
@@ -133,7 +133,7 @@ export default function DoacaoFinanceira() {
         setMetodoPagamento("CARTAO");
 
         axios
-          .get("http://localhost:8080/ultimoCartaoDeCredito", {
+          .get("https://plataformaong-production.up.railway.app/ultimoCartaoDeCredito", {
             headers: {
               Authorization: `Bearer ${token}`,
             },

@@ -21,7 +21,7 @@ export default function FinancialCampaignCard({
   useEffect(() => {
     console.log(`🔄 Buscando imagem para campanha ID: ${idCampanhaFinanceira}`);
     axios
-      .get(`http://localhost:8080/imagem/campanha/${idCampanhaFinanceira}`, {
+      .get(`https://plataformaong-production.up.railway.app/imagem/campanha/${idCampanhaFinanceira}`, {
         responseType: "arraybuffer",
       })
       .then((response) => {

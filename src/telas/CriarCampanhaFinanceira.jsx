@@ -61,7 +61,7 @@ export default function CriarCampanhaFinanceira() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/salvarCampanhaFinanceira",
+        "https://plataformaong-production.up.railway.app/salvarCampanhaFinanceira",
         formData,
         {
           headers: {
