@@ -8,6 +8,16 @@
   margin-bottom: 20px;
 }
 
+.campanhas-de-itens {
+  margin-bottom: 20px;
+  /* Ajuste conforme necessário */
+}
+
+.campanhas-financeiras {
+  margin-top: 20px;
+  /* Ajuste conforme necessário */
+}
+
 .campanhas-lista {
   max-height: 400px;
   overflow-y: auto;
