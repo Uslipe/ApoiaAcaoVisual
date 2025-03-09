@@ -213,7 +213,7 @@ export default function DoacaoFinanceira() {
                 id="cvv"
                 value={cvv}
                 onChange={(e) => setCvv(e.target.value)}
-                onChange={handleCvvChange}
+                //onChange={handleCvvChange}
                 required
               />
             </div>
