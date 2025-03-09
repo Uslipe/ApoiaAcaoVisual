@@ -78,7 +78,6 @@ export default function Home() {
     <div>
       <Navbar />
 
-<<<<<<< HEAD
       <div className="container mt-4 home-container">
         <div className="camp">
           <h2>Campanhas Financeiras</h2>
@@ -104,56 +103,6 @@ export default function Home() {
         </div>
 
         <h2 className="mt-4">Campanhas de Itens</h2>
-        {campanhasItens.length > 0 &&
-          campanhasItens.map((campanha) => (
-            <div key={campanha.idCampanhaDeItens} className="card mb-3">
-              <div className="card-body">
-                <h5 className="card-title">{campanha.nome}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">
-                  ONG: {campanha.idOng?.nome || "Desconhecida"}
-                </h6>
-                <p className="card-text">{campanha.descricao}</p>
-                <p className="card-text">
-                  <small className="text-muted">
-                    Início: {campanha.dataInicio} | Fim: {campanha.dataFim}
-                  </small>
-                </p>
-                <p className="card-text">
-                  Endereço de entrega: {campanha.endereco} <br />
-                  Quantidade de itens: {campanha.quantidadeDeItens} <br />
-                  Itens entregues: {campanha.quantidadeDeItensEntregues} <br />
-                  Categoria: {campanha.categoriaItens}
-                </p>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => handleDoarItens(campanha)}
-                >
-                  <i class="fa-solid fa-hand-holding-heart"></i> Doar
-                </button>
-=======
-      <div className="container mt-4 home-container" style={{paddingBottom: "5%"}}>
-        <h2>Campanhas Financeiras</h2>
-        {campanhasFinanceiras.length > 0 ? (
-          <Slider {...settings}>
-            {campanhasFinanceiras.map((campanha) => (
-              <div key={campanha.idCampanhaFinanceira}>
-                <FinancialCampaignCard
-                  nome={campanha.nome}
-                  descricao={campanha.descricao}
-                  valorArrecadado={campanha.valorArrecadado}
-                  metaValor={campanha.metaValor}
-                  diasRestantes={calcularDiasRestantes(campanha.dataFim)}
-                  onDoar={() => handleDoar(campanha)}
-                  idCampanhaFinanceira={campanha.idCampanhaFinanceira}
-                />
-              </div>
-            ))}
-          </Slider>
-        ) : (
-          <p>Nenhuma campanha disponível.</p>
-        )}
-
-        <h2 className="mt-4" style={{paddingTop: "5%"}}>Campanhas de Itens</h2>
         {campanhasItens.length > 0 ? (
           <Slider {...settings}>
             {campanhasItens.map((campanha) => (
@@ -168,7 +117,6 @@ export default function Home() {
                   idCampanhaDeItens={campanha.idCampanhaDeItens}
                   itensACaminho={campanha.itensACaminho}
                 />
->>>>>>> ed6d404dcaa055b8b8d7e3811333a28ab5f8740b
               </div>
             ))}
           </Slider>
