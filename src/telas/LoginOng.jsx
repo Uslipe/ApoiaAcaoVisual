@@ -16,7 +16,7 @@ export default function Login() {
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     const handlePopState = (event) => {
-      if (location.pathname === "/loginOng") {
+      if (location.pathname === "/loginong") {
         navigate("/");
       }
     };
