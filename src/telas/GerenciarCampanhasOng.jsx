@@ -74,19 +74,19 @@ export default function GerenciarCampanhasOng() {
             <span>ID</span>
             <span>Nome da Campanha</span>
             <span>Data de Início</span>
-            <span>Encerrada</span>
+            <span>Progresso</span>
             <span>Ações</span>
           </div>
           {campanhasDeItens.length > 0 ? (
             campanhasDeItens.map((campanha) => {
-              const { idCampanhaDeItens, nome, dataInicio, encerrada } = campanha;
+              const { idCampanhaDeItens, nome, dataInicio, quantidadeDeItensEntregues, quantidadeDeItens } = campanha;
               const dataFormatada = new Date(dataInicio).toLocaleDateString('pt-BR');
               return (
                 <div key={idCampanhaDeItens} className="campanha-item">
                   <span>{idCampanhaDeItens}</span>
                   <span>{nome}</span>
                   <span>{dataFormatada}</span>
-                  <span>{encerrada ? "Sim" : "Não"}</span>
+                  <span>{quantidadeDeItensEntregues} / {quantidadeDeItens}</span>
                   <span>
                     <button onClick={() => handleEdit(campanha, "itens")}>Editar</button>
                   </span>
@@ -103,19 +103,19 @@ export default function GerenciarCampanhasOng() {
             <span>ID</span>
             <span>Nome da Campanha</span>
             <span>Data de Início</span>
-            <span>Encerrada</span>
+            <span>Progresso</span>
             <span>Ações</span>
           </div>
           {campanhasFinanceiras.length > 0 ? (
             campanhasFinanceiras.map((campanha) => {
-              const { idCampanhaFinanceira, nome, dataInicio, encerrada } = campanha;
+              const { idCampanhaFinanceira, nome, dataInicio, valorArrecadado, metaValor } = campanha;
               const dataFormatada = new Date(dataInicio).toLocaleDateString('pt-BR');
               return (
                 <div key={idCampanhaFinanceira} className="campanha-item">
                   <span>{idCampanhaFinanceira}</span>
                   <span>{nome}</span>
                   <span>{dataFormatada}</span>
-                  <span>{encerrada ? "Sim" : "Não"}</span>
+                  <span>{valorArrecadado} / {metaValor}R$</span>
                   <span>
                     <button onClick={() => handleEdit(campanha, "financeira")}>Editar</button>
                   </span>

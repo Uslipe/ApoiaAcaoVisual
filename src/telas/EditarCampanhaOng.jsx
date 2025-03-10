@@ -16,6 +16,9 @@ export default function EditarCampanhaOng() {
   const [dataFim, setDataFim] = useState(campanha.dataFim);
   const [metaValor, setMetaValor] = useState(campanha.metaValor || "");
   const [endereco, setEndereco] = useState(campanha.endereco || "");
+  const [quantidadeDeItens, setQuantidadeDeItens] = useState(campanha.quantidadeDeItens || "");
+  const [itensACaminho, setItensACaminho] = useState(campanha.itensACaminho || 0);
+  const [doacoes, setDoacoes] = useState([]);
 
   // Determine the campaign ID based on the type of campaign
   const campanhaId = tipo === "financeira" ? campanha.idCampanhaFinanceira : campanha.idCampanhaDeItens;
@@ -30,6 +33,25 @@ export default function EditarCampanhaOng() {
     if (!token || !campanhaId) {
       navigate("/loginOng");
       return;
+    }
+
+    const fetchDoacoes = async () => {
+      try {
+        const response = await axios.get(`https://plataformaong-production.up.railway.app/listarDoacoesPorCampanhaDeItens/${campanhaId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        console.log("Resposta da API (Doações):", response.data);
+        setDoacoes(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar doações:", error);
+      }
+    };
+
+    if (tipo === "itens") {
+      fetchDoacoes();
     }
   }, [navigate, campanhaId, tipo]);
 
@@ -50,6 +72,7 @@ export default function EditarCampanhaOng() {
           dataFim,
           metaValor: tipo === "financeira" ? metaValor : undefined,
           endereco: tipo === "itens" ? endereco : undefined,
+          quantidadeDeItens: tipo === "itens" ? quantidadeDeItens : undefined,
         },
         {
           headers: {
@@ -119,6 +142,44 @@ export default function EditarCampanhaOng() {
     }
   };
 
+  const handleRecebida = async (doacaoId) => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.put(
+        `https://plataformaong-production.up.railway.app/marcarDoacaoComoRecebida/${doacaoId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (response.status === 200) {
+        toast.success("Doação marcada como recebida!", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+        });
+        setDoacoes(doacoes.filter((doacao) => doacao.idDoacaoDeItens !== doacaoId));
+      }
+    } catch (error) {
+      console.error("Erro ao marcar doação como recebida:", error);
+      toast.error("Falha ao marcar doação como recebida. Tente novamente.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+      });
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -169,18 +230,43 @@ export default function EditarCampanhaOng() {
               />
             </div>
           )}
-          {/* {tipo === "itens" && (
-            <div className="form-group">
-              <label htmlFor="endereco">Endereço</label>
-              <input
-                type="text"
-                className="form-control"
-                id="endereco"
-                value={endereco}
-                onChange={(e) => setEndereco(e.target.value)}
-              />
-            </div>
-          )} */}
+          {tipo === "itens" && (
+            <>
+              <div className="form-group">
+                <label htmlFor="quantidadeDeItens">Quantidade de Itens</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="quantidadeDeItens"
+                  value={quantidadeDeItens}
+                  onChange={(e) => setQuantidadeDeItens(e.target.value)}
+                />
+              </div>
+              <div className="itens-a-caminho" style={{ fontSize: "small" }}>
+                Itens a caminho: {itensACaminho}
+              </div>
+              <div className="doacoes-lista">
+                <h3>Doações</h3>
+                {doacoes.length > 0 ? (
+                  doacoes.map((doacao) => (
+                    <div key={doacao.idDoacaoDeItens} className="doacao-item">
+                      <span>ID: {doacao.idDoacaoDeItens}</span>
+                      <span>Nome: {doacao.nomeDoador}</span>
+                      <span>Quantidade: {doacao.quantidadeDeItens}</span>
+                      <button
+                        className="btn btn-success"
+                        onClick={() => handleRecebida(doacao.idDoacaoDeItens)}
+                      >
+                        Recebida
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <p>Nenhuma doação encontrada.</p>
+                )}
+              </div>
+            </>
+          )}
           <button type="submit" className="btn btn-primary mt-3">
             Editar Campanha
           </button>
