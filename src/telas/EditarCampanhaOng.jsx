@@ -95,7 +95,7 @@ export default function EditarCampanhaOng() {
         },
       });
 
-      if (response.status === 200) {
+      if (response.status === 204) {
         toast.success("Campanha deletada com sucesso!", {
           position: "top-right",
           autoClose: 2000,

@@ -107,7 +107,7 @@ export default function Navbar() {
                             <a href="/perfilOng"> Gerenciar Perfil </a>
                           </li>
                           <li>
-                            <a href="/gerenciarCampanhas">
+                            <a href="/gerenciarCampanhasOng">
                               {" "}
                               Gerenciar Campanhas{" "}
                             </a>
@@ -119,7 +119,7 @@ export default function Navbar() {
                             <a href="/perfil"> Gerenciar Perfil </a>
                           </li>
                           <li>
-                            <a href="/HistoricoDoacoesDoador">
+                            <a href="/historicoDoacoesDoador">
                               Ver históricos de doações
                             </a>
                           </li>

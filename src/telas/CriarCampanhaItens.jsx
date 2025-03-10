@@ -70,7 +70,7 @@ export default function CriarCampanhaItens() {
           hideProgressBar: true,
           pauseOnHover: false,
         });
-        navigate("/AreaOng");
+        navigate("/");
       }
     } catch (error) {
       console.error("Erro ao criar campanha:", error);
