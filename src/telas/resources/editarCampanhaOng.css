@@ -1,0 +1,34 @@
+.editar-campanha-container {
+  padding-top: 50px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.editar-campanha-container h2 {
+  margin-bottom: 20px;
+}
+
+.editar-campanha-container .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.editar-campanha-container .form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.editar-campanha-container .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.editar-campanha-container .btn-primary {
+  margin-right: 10px;
+}
+
+.editar-campanha-container .btn-danger {
+  margin-right: 10px;
+}

@@ -9,10 +9,6 @@ export default function GerenciarCampanhasOng() {
   const [campanhasFinanceiras, setCampanhasFinanceiras] = useState([]);
   const navigate = useNavigate();
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     const id = localStorage.getItem("id");
@@ -64,7 +60,7 @@ export default function GerenciarCampanhasOng() {
   }, [navigate]);
 
   const handleEdit = (campanha, tipo) => {
-    navigate(`/editarCampanha`, { state: { campanha, tipo } });
+    navigate(`/editarCampanhaOng`, { state: { campanha, tipo } });
   };
 
   return (
@@ -92,7 +88,7 @@ export default function GerenciarCampanhasOng() {
                   <span>{dataFormatada}</span>
                   <span>{encerrada ? "Sim" : "Não"}</span>
                   <span>
-                    <button onClick={() => handleNavigation("/editarCampanhaOng")}>Editar</button>
+                    <button onClick={() => handleEdit(campanha, "itens")}>Editar</button>
                   </span>
                 </div>
               );
@@ -120,8 +116,8 @@ export default function GerenciarCampanhasOng() {
                   <span>{nome}</span>
                   <span>{dataFormatada}</span>
                   <span>{encerrada ? "Sim" : "Não"}</span>
-                  <span> 
-                    <button onClick={() => handleNavigation("/editarCampanhaOng")}>Editar</button>
+                  <span>
+                    <button onClick={() => handleEdit(campanha, "financeira")}>Editar</button>
                   </span>
                 </div>
               );

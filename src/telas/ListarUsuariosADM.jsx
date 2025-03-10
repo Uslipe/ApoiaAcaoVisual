@@ -23,10 +23,8 @@ export default function ListarUsuariosADM() {
 
         console.log("Resposta da API:", response.data);
 
-        // Ordenar os usuários por nome (alfabeticamente)
-        const usuariosOrdenados = response.data.sort((a, b) =>
-          a.nome.localeCompare(b.nome),
-        );
+        // Ordenar os usuários por ID (do menor para o maior)
+        const usuariosOrdenados = response.data.sort((a, b) => a.id - b.id);
 
         setUsuarios(usuariosOrdenados);
       } catch (error) {

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import Navbar from "../layout/Navbar";
 import "./resources/validarOngADM.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ValidarOngADM() {
   const [ongs, setOngs] = useState([]);
@@ -64,6 +66,17 @@ export default function ValidarOngADM() {
       if (response.status === 200) {
         // Atualizar a lista de ONGs após a validação
         setOngs(ongs.filter(o => o.id !== id));
+        
+        // Exibir alerta de sucesso
+        toast.success("ONG validada com sucesso!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
       } else {
         console.error("Erro ao validar ONG:", response.status);
       }
