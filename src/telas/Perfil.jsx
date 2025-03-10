@@ -28,11 +28,14 @@ export default function Perfil() {
 
     // Buscar os dados do usuário
     axios
-      .get(`https://plataformaong-production.up.railway.app/buscarUsuario/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      .get(
+        `https://plataformaong-production.up.railway.app/buscarUsuario/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      })
+      )
       .then((response) => {
         const { nome, email } = response.data;
         setNome(nome);
@@ -119,11 +122,14 @@ export default function Perfil() {
     }
 
     try {
-      await axios.delete(`https://plataformaong-production.up.railway.app/deletarUsuario/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.delete(
+        `https://plataformaong-production.up.railway.app/deletarUsuario/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       toast.success("Conta excluída.", {
         position: "top-right",
@@ -166,16 +172,6 @@ export default function Perfil() {
         },
       ],
     });
-  };
-
-  const handleHistoricoDoacoesDoador = () => {
-    navigate("/historicoDoacoesDoador");
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("idUsuario");
-    navigate("/");
   };
 
   return (
@@ -241,23 +237,23 @@ export default function Perfil() {
               <div className="flex-grow-1 border-bottom"></div>
             </div>
 
-        <div className="zona-de-perigo mt-1">
-          <h4 className="text-danger">Zona de perigo!</h4>
-          <p className="text-muted">A ação abaixo não pode ser desfeita.</p>
-          <input
-            type="password"
-            className="form-control mt-2"
-            placeholder="Digite sua senha para confirmar"
-            value={confirmarSenha}
-            onChange={(e) => setConfirmarSenha(e.target.value)}
-          />
-          <button
-            className="btn btn-danger mt-3"
-            onClick={confirmDeleteAccount}
-          >
-            Excluir Conta
-          </button>
-        </div>
+            <div className="zona-de-perigo mt-1">
+              <h4 className="text-danger">Zona de perigo!</h4>
+              <p className="text-muted">A ação abaixo não pode ser desfeita.</p>
+              <input
+                type="password"
+                className="form-control mt-2"
+                placeholder="Digite sua senha para confirmar"
+                value={confirmarSenha}
+                onChange={(e) => setConfirmarSenha(e.target.value)}
+              />
+              <button
+                className="btn btn-danger mt-3"
+                onClick={confirmDeleteAccount}
+              >
+                Excluir Conta
+              </button>
+            </div>
 
             <div className="zona-de-perigo mt-1">
               <h4 className="text-danger">Zona de perigo!</h4>
