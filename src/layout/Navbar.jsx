@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import "./resources/style.css";
 
-export default function Navbar() {
+export default function NavbarOng() {
   const navigate = useNavigate();
   const location = useLocation();
   const token = localStorage.getItem("token");
   const roles = JSON.parse(localStorage.getItem("roles")) || [];
+  const [isOngValidada, setIsOngValidada] = useState(false);
+
+  useEffect(() => {
+    const verificarOngValidada = async () => {
+      const id = localStorage.getItem("id");
+      if (id && roles.includes("ROLE_ONG")) {
+        try {
+          const response = await axios.get(
+            `https://plataformaong-production.up.railway.app/ongValidada/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+          setIsOngValidada(response.data);
+        } catch (error) {
+          console.error("Erro ao verificar se a ONG está validada:", error);
+        }
+      }
+    };
+
+    verificarOngValidada();
+  }, [token, roles]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -20,6 +46,20 @@ export default function Navbar() {
     const footer = document.getElementById("footer");
     if (footer) {
       footer.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleCreateCampaign = (path) => {
+    if (isOngValidada) {
+      navigate(path);
+    } else {
+      toast.error("Sua conta precisa ser validada para criar campanhas.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        pauseOnHover: false,
+        draggable: false,
+      });
     }
   };
 
@@ -60,14 +100,24 @@ export default function Navbar() {
               <div className="dropdown-content">
                 <ul>
                   <li>
-                    <Link to="/criarCampanhaFinanceira">
+                    <span
+                      className="link"
+                      onClick={() =>
+                        handleCreateCampaign("/criarCampanhaFinanceira")
+                      }
+                    >
                       Criar Campanha Financeira
-                    </Link>
+                    </span>
                   </li>
                   <li>
-                    <Link to="/criarCampanhaItens">
+                    <span
+                      className="link"
+                      onClick={() =>
+                        handleCreateCampaign("/criarCampanhaItens")
+                      }
+                    >
                       Criar Campanha de Itens
-                    </Link>
+                    </span>
                   </li>
                 </ul>
               </div>
