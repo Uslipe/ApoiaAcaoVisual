@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -16,12 +17,19 @@ export default function EditarCampanhaOng() {
   const [dataFim, setDataFim] = useState(campanha.dataFim);
   const [metaValor, setMetaValor] = useState(campanha.metaValor || "");
   const [endereco, setEndereco] = useState(campanha.endereco || "");
-  const [quantidadeDeItens, setQuantidadeDeItens] = useState(campanha.quantidadeDeItens || "");
-  const [itensACaminho, setItensACaminho] = useState(campanha.itensACaminho || 0);
+  const [quantidadeDeItens, setQuantidadeDeItens] = useState(
+    campanha.quantidadeDeItens || "",
+  );
+  const [itensACaminho, setItensACaminho] = useState(
+    campanha.itensACaminho || 0,
+  );
   const [doacoes, setDoacoes] = useState([]);
 
   // Determine the campaign ID based on the type of campaign
-  const campanhaId = tipo === "financeira" ? campanha.idCampanhaFinanceira : campanha.idCampanhaDeItens;
+  const campanhaId =
+    tipo === "financeira"
+      ? campanha.idCampanhaFinanceira
+      : campanha.idCampanhaDeItens;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -37,11 +45,14 @@ export default function EditarCampanhaOng() {
 
     const fetchDoacoes = async () => {
       try {
-        const response = await axios.get(`https://plataformaong-production.up.railway.app/listarDoacoesPorCampanhaDeItens/${campanhaId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const response = await axios.get(
+          `https://plataformaong-production.up.railway.app/listarDoacoesPorCampanhaDeItens/${campanhaId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
 
         console.log("Resposta da API (Doações):", response.data);
         setDoacoes(response.data);
@@ -60,9 +71,10 @@ export default function EditarCampanhaOng() {
     const token = localStorage.getItem("token");
 
     try {
-      const url = tipo === "financeira"
-        ? `https://plataformaong-production.up.railway.app/editarCampanhaFinanceira/${campanhaId}`
-        : `https://plataformaong-production.up.railway.app/editarCampanhaDeItens/${campanhaId}`;
+      const url =
+        tipo === "financeira"
+          ? `https://plataformaong-production.up.railway.app/editarCampanhaFinanceira/${campanhaId}`
+          : `https://plataformaong-production.up.railway.app/editarCampanhaDeItens/${campanhaId}`;
 
       const response = await axios.put(
         url,
@@ -108,9 +120,10 @@ export default function EditarCampanhaOng() {
     const token = localStorage.getItem("token");
 
     try {
-      const url = tipo === "financeira"
-        ? `https://plataformaong-production.up.railway.app/deletarCampanhaFinanceira/${campanhaId}`
-        : `https://plataformaong-production.up.railway.app/deletarCampanhaDeItens/${campanhaId}`;
+      const url =
+        tipo === "financeira"
+          ? `https://plataformaong-production.up.railway.app/deletarCampanhaFinanceira/${campanhaId}`
+          : `https://plataformaong-production.up.railway.app/deletarCampanhaDeItens/${campanhaId}`;
 
       const response = await axios.delete(url, {
         headers: {
@@ -165,7 +178,9 @@ export default function EditarCampanhaOng() {
           pauseOnHover: false,
           draggable: false,
         });
-        setDoacoes(doacoes.filter((doacao) => doacao.idDoacaoDeItens !== doacaoId));
+        setDoacoes(
+          doacoes.filter((doacao) => doacao.idDoacaoDeItens !== doacaoId),
+        );
       }
     } catch (error) {
       console.error("Erro ao marcar doação como recebida:", error);
@@ -270,7 +285,11 @@ export default function EditarCampanhaOng() {
           <button type="submit" className="btn btn-primary mt-3">
             Editar Campanha
           </button>
-          <button type="button" className="btn btn-danger mt-3 ml-3" onClick={handleDelete}>
+          <button
+            type="button"
+            className="btn btn-danger mt-3 ml-3"
+            onClick={handleDelete}
+          >
             Deletar Campanha
           </button>
         </form>
