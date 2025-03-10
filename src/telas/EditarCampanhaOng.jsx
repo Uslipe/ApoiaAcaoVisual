@@ -33,7 +33,6 @@ export default function EditarCampanhaOng() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     console.log("Token:", token);
     console.log("Campanha ID:", campanhaId);
     console.log("Tipo de Campanha:", tipo);
