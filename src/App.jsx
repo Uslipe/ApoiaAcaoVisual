@@ -29,6 +29,7 @@ import DeletarCampanhasADM from "./telas/DeletarCampanhasADM";
 import CriarCampanhaFinanceira from "./telas/CriarCampanhaFinanceira";
 import GerenciarCampanhasOng from "./telas/GerenciarCampanhasOng";
 import CriarCampanhaItens from "./telas/CriarCampanhaItens";
+import EditarCampanhaOng from "./telas/EditarCampanhaOng";
 
 function App() {
   useEffect(() => {
@@ -80,6 +81,7 @@ function App() {
             element={<GerenciarCampanhasOng />}
           />
           <Route path="/criarCampanhaItens" element={<CriarCampanhaItens />} />
+          <Route path="/editarCampanhaOng" element={<EditarCampanhaOng />} />
         </Routes>
         <div className="App">
           {loaded && <VLibras forceOnload={true} />}
