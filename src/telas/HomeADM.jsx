@@ -10,6 +10,14 @@ export default function HomeADM() {
     navigate(path);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("idUsuario");
+    localStorage.removeItem("id");
+    localStorage.removeItem("roles");
+    navigate("/");
+  };
+
   return (
     <div>
       <Navbar />
@@ -44,7 +52,7 @@ export default function HomeADM() {
         </div>
         <button
           className="btn btn-danger mt-4 logout-button"
-          onClick={() => handleNavigation("/logout")}
+          onClick={handleLogout}
         >
           Sair da conta
         </button>
