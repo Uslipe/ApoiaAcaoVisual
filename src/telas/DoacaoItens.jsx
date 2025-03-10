@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -99,7 +100,6 @@ export default function DoacaoItens() {
           <p className="text-muted">Categoria: {campanha.categoriaItens}</p>
         </div>
         {/* botao de doar */}
-
       </div>
       <div className="container">
         <div className=" input-group mt-3">
